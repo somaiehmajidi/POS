@@ -9,3 +9,15 @@
     direction: rtl;
     text-align:right;
 }
+.cart-item{
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    font-size: 14px;
+}
+    .item-detail{
+        color: #888;
+        font-size: 12px;
+    }
+.selectedItem{
+    background-color: #eee;
+}

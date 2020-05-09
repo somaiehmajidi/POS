@@ -5,16 +5,27 @@
                 <p>Your shopping cart is empty </p>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="cart-item" *ngFor = "let order of orders" 
+                    (click)="onSelect(order)"
+                    [ngClass]="{selectedItem: order == selectedItem }">
+                    <div class="clearfix">
+                        <div class="float-right">{{order.name}}</div>
+                        <div class="float-left font-weight-bold">{{order.totalPrice | number:'1.0'}}</div>
+                    </div>
+                    <div class="item-detail">
+                        <span>تعداد:</span> {{order.unit}}
+                        /
+                        <span>قیمت واحد:</span> {{order.price | number:'1.0'}}
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row" *ngIf = "orders.length > 0">
             <div class="col-md-12">
-                 <div *ngFor = "let order of orders">
-                    <div class="float-right">{{order.name}}</div>
-                    <div class="float-left">{{order.price | number:'1.0'}}</div>
-                 </div>
-                 {{order.unit}}
-                    {{order.totalPrice}}
+                <div>{{total}}</div>
             </div>
-            {{total}}
         </div>
     </div>
 </div>
