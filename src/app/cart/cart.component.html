@@ -1,0 +1,20 @@
+<div class="cart-side" style="background-color: #fff">
+    <div class="container" style="margin-top: 55px">
+        <div class="row" *ngIf = "orders.length === 0">
+            <div class="col-md-12">
+                <p>Your shopping cart is empty </p>
+            </div>
+        </div>
+        <div class="row" *ngIf = "orders.length > 0">
+            <div class="col-md-12">
+                 <div *ngFor = "let order of orders">
+                    <div class="float-right">{{order.name}}</div>
+                    <div class="float-left">{{order.price | number:'1.0'}}</div>
+                 </div>
+                 {{order.unit}}
+                    {{order.totalPrice}}
+            </div>
+            {{total}}
+        </div>
+    </div>
+</div>

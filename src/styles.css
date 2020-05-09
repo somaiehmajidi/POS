@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body{
+    padding: 0px;
+    margin: 0px;
+    font-size: 12px;
+    font-family: 'sans' !important;
+    background-color: #f0f0f0 !important;
+}
+@font-face{
+    font-family: 'sans';
+    src:url('assets/fonts/IRANSansWeb.ttf'),
+        url('assets/fonts/IRANSansWeb_Bold.ttf'),
+        url('assets/fonts/IRANSansWeb_Light.ttf');
+}
+ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+img{
+    max-width: 100%;
+}

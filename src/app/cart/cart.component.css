@@ -1,0 +1,11 @@
+.cart-side{
+    position: fixed;
+    width: 30%;
+    max-width: 30%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    border-right: 1px solid #ccc;
+    direction: rtl;
+    text-align:right;
+}

@@ -1,0 +1,35 @@
+<div class="product-side">
+    <div class="container">
+        <div class="row" style="margin-top: 55px">
+            <div class="col-md-12 product-bar">
+                <div class="d-flex">
+                    <div class="ml-auto">همه محصولات</div>
+                    <div class="search-placeholder">
+                        <input type="text" 
+                        name="search" 
+                        placeholder="جستجوی محصول" 
+                        [(ngModel)]="searchTxt">
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div *ngIf ="( products | filter : searchTxt) as result">
+            <div class="row">
+                <div class="col-md-2 list-item" 
+                    *ngFor = "let product of result"
+                    (click) = "addToCart(product)">
+                    <a>
+                        <span><img src="{{product.imageUrl}}" /></span>
+                        <span class="name">{{product.name}}</span>
+                        <span class="price">{{product.price | number:'1.0'}} T</span> 
+                    </a>
+                </div>
+            </div>
+            <div class="row" *ngIf="result.length === 0">
+                <div class="col-md-12">
+                    <div class="alert alert-dark" role="alert">نتیجه ای یافت نشد!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
