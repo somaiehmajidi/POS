@@ -21,6 +21,15 @@
         color: #888;
         font-size: 12px;
     }
+.empty-cart{
+    color: #ccc;
+    text-align: center;
+    font-size: 18px;
+    padding-top: 20px;
+}
+    .empty-cart i{
+        font-size: 48px;
+    }
 .selectedItem{
     background-color: #eee;
 }

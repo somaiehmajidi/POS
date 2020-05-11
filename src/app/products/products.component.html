@@ -5,18 +5,30 @@
                 <div class="d-flex">
                     <div class="ml-auto">همه محصولات</div>
                     <div class="search-placeholder">
-                        <i class="fa fa-search"></i>
-                        <input type="text" 
+                        <span class="icon-placeholder">
+                            <i class="fa fa-search" (click)="searchInput.focus()"></i>
+                        </span>
+                        <input type="text" #searchInput 
                         name="search" 
                         placeholder="جستجوی محصول" 
                         [(ngModel)]="searchTxt">
-                        <i class="fa fa-times"></i>
+                        <span class="icon-placeholder">
+                            <i class="fa fa-times" (click)="clearSearch()"></i>
+                        </span>
                     </div>
                 </div> 
             </div>
         </div>
         <div *ngIf ="( products | filter : searchTxt) as result">
+            <div class="row" *ngIf="result.length === 0">
+                <div class="col-md-12">
+                    <div class="alert alert-dark" role="alert">نتیجه ای یافت نشد!</div>
+                </div>
+            </div>
             <div class="row">
+                <div class="col-md-2">
+                    <app-quickkey (click)="addKey()"></app-quickkey>
+                </div>
                 <div class="col-md-2 list-item" 
                     *ngFor = "let product of result"
                     (click) = "addToCart(product)">
@@ -26,12 +38,16 @@
                         <span class="price">{{product.price | number:'1.0'}} T</span> 
                     </a>
                 </div>
+            </div>   
+        </div> 
+        <!-- <div class="row">
+            <div class="col-md-2 list-item" *ngFor = "let product of products | filter: searchTxt" (click)="addToCart(product)">
+                <a >
+                    <span><img src="{{product.imageUrl}}" /></span>
+                    <span class="name">{{product.name}}</span>
+                    <span class="price">{{product.price | number:'1.0'}} T</span> 
+                </a>
             </div>
-            <div class="row" *ngIf="result.length === 0">
-                <div class="col-md-12">
-                    <div class="alert alert-dark" role="alert">نتیجه ای یافت نشد!</div>
-                </div>
-            </div>
-        </div>
+        </div> -->
     </div>
 </div>

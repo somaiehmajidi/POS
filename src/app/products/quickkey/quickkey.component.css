@@ -1,0 +1,21 @@
+.quick-key{
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    text-align: center;    
+    color: #ccc;
+    height: 128px;
+}
+    .quick-key:hover,
+    .quick-key:focus{
+        color: #aaa;
+        cursor: pointer;
+    }
+
+    .quick-key span{
+        box-sizing: border-box;
+        display: inline-block;
+    }
+    .quick-key span i{
+        font-size: 48px; 
+        margin-top: 60%;
+    }

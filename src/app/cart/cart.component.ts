@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from '../services/cart.service';
 import { Order } from '../interfaces/Order';
-import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,17 +13,14 @@ export class CartComponent implements OnInit {
   total: number = 0;
   selectedItem: any;
   
-  constructor(private dataService: DataService) { }
+  constructor(private cartService: CartService) { }
 
-  ngOnInit(): void {
-   this.dataService.getOrders()
-   .subscribe(orders =>{
-      this.orders = orders;
-   });
-   //this.selectedItem = this.orders.slice(-1)[0];
-   
+  ngOnInit(){ 
+    this.orders = this.cartService.orders;
   }
 
+  //this.selectedItem = this.orders.slice(-1)[0];
+   
   ngAfterContentChecked(){
     this.total = this.orders.reduce(function(prev, cur){
        return prev+cur.totalPrice;
@@ -31,7 +28,7 @@ export class CartComponent implements OnInit {
   }
 
   onSelect(order: Order): void{
-    this.selectedItem = order;
+  this.selectedItem = order;
   }
 
 }

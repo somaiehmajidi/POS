@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Product } from '../Product';
 import { DataService } from '../services/data.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -10,11 +11,13 @@ import { DataService } from '../services/data.service';
 })
 export class ProductsComponent implements OnInit {
 
+  @ViewChild('searchInput') inputElement : ElementRef;
   products: Product[];
 
   searchTxt: string = '';
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService,
+              private cartService: CartService) {}
 
   ngOnInit(): void {
     this.dataService.getProducts()
@@ -24,7 +27,15 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(product){
-    this.dataService.addToCart(product);
+    this.cartService.addToCart(product);
   }
 
+  clearSearch(){
+    this.inputElement.nativeElement.value = '';
+  }
+
+  addKey(){
+    alert('hi')
+  }
+  
 }

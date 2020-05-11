@@ -25,7 +25,7 @@
     }
     .list-item a span:first-child{
         display: inline-block;
-        height: 100px;
+        height: 98px;
         overflow: hidden;
     }
     .list-item a .name{
@@ -46,20 +46,33 @@
     }
 .product-bar{
     border-bottom: 1px solid #ccc;
+    margin-top: 5px;
     margin-bottom:20px;
 }
     .product-bar div.d-flex{
         margin-top:5px;
-        margin-bottom:5px;
+        margin-bottom:10px;
     }
     .product-bar .search-placeholder{
         border:1px solid #ccc;
-        padding:3px;
+        padding:5px 10px;
+        background-color: #fff;
     }
     .product-bar input{
         background-color: transparent;
         border: none;
+        padding: 0px 10px;
     }
 .alert{
     text-align:center;
 }
+.icon-placeholder{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    color: #888;
+}
+    .icon-placeholder:hover{ 
+        cursor: pointer;
+        color: #999;
+    }
