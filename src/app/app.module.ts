@@ -8,6 +8,7 @@ import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
 import { FilterPipe } from './filter.pipe';
 import { QuickkeyComponent } from './products/quickkey/quickkey.component';
+import { CategoriesComponent } from './products/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { QuickkeyComponent } from './products/quickkey/quickkey.component';
     CartComponent,
     FilterPipe,
     QuickkeyComponent,
+    CategoriesComponent,
   ],
   imports: [
     BrowserModule,

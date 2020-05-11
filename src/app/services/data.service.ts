@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';  
 import { Observable, of } from 'rxjs';
 
-import { Product } from '../Product';
+import { Product } from '../interfaces/Product';
 import { PRODUCTS } from '../mock.products';
-//import { Order } from '../interfaces/Order';
 
 @Injectable({
     providedIn: 'root'  
@@ -12,12 +11,21 @@ import { PRODUCTS } from '../mock.products';
 export class DataService {
 
     products: Product[] = [];
-    //orders: Order[] = [];
-    //orders: Array<{name, price, totalPrice, unit}> = [];
+    categories: string[] = [];
 
     public getProducts(): Observable<Product[]>{
         this.products = PRODUCTS;
         return of (this.products);
+    }
+
+    public getCategories(){
+        for (var i=0; i < this.products.length; i++){
+            let cat = this.products[i].category;
+            if(!this.categories.includes(cat)){
+              this.categories.push(cat);
+            }
+          }
+        return this.categories;
     }
 
 }

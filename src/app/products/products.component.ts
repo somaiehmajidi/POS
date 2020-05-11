@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { Product } from '../Product';
+import { Product } from '../interfaces/Product';
 import { DataService } from '../services/data.service';
 import { CartService } from '../services/cart.service';
 
@@ -37,5 +37,5 @@ export class ProductsComponent implements OnInit {
   addKey(){
     alert('hi')
   }
-  
+
 }

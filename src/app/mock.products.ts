@@ -1,4 +1,4 @@
-import { Product } from './Product';
+import { Product } from './interfaces/Product';
 
 export const PRODUCTS: Product[] = [
     {id: 1, name: 'پاستا کاپوناتا', price: 30000, units: 5, category: 'پاستا', imageUrl: 'assets/images/caponata-pasta.jpg'},
