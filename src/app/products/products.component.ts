@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Product } from '../interfaces/Product';
 import { DataService } from '../services/data.service';
 import { CartService } from '../services/cart.service';
+import { MatDialog } from '@angular/material/dialog';
+import { QuickKeyModalComponent } from './quick-key-modal/quick-key-modal.component';
 
 @Component({
   selector: 'app-products',
@@ -12,16 +14,18 @@ import { CartService } from '../services/cart.service';
 export class ProductsComponent implements OnInit {
 
   @ViewChild('searchInput') inputElement : ElementRef;
+  
   products: Product[];
 
   searchTxt: string = '';
 
   constructor(private dataService: DataService,
-              private cartService: CartService) {}
+              private cartService: CartService,
+              public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.dataService.getProducts()
-    .subscribe( products => {
+      .subscribe( products => {
       this.products = products;
     })
   }
@@ -34,8 +38,8 @@ export class ProductsComponent implements OnInit {
     this.inputElement.nativeElement.value = '';
   }
 
-  addKey(){
-    alert('hi')
+  addKey():void{
+    this.dialog.open(QuickKeyModalComponent);
   }
 
 }

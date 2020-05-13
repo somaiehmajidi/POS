@@ -1,3 +1,9 @@
 <div *ngFor = "let cat of categories">
     {{cat}}
 </div>
+<form id="searchForm" (ngSubmit)="searchProducts(searchTerm)">
+    <div>
+        <input [(ngModel)]="searchTerm" name="searchTerm" type="text" placeholder="Search Categories">
+        <button class="btn-sm btn-primary">Search</button>
+    </div>
+</form>

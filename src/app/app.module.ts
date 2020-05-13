@@ -9,6 +9,10 @@ import { CartComponent } from './cart/cart.component';
 import { FilterPipe } from './filter.pipe';
 import { QuickkeyComponent } from './products/quickkey/quickkey.component';
 import { CategoriesComponent } from './products/categories/categories.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatDialogModule } from '@angular/material/dialog';
+import { QuickKeyModalComponent } from './products/quick-key-modal/quick-key-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +23,14 @@ import { CategoriesComponent } from './products/categories/categories.component'
     FilterPipe,
     QuickkeyComponent,
     CategoriesComponent,
+    QuickKeyModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NoopAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

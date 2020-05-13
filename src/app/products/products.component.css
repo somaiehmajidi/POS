@@ -76,3 +76,11 @@
         cursor: pointer;
         color: #999;
     }
+
+@media screen and (max-width: 768px) and (min-width: 600px) {
+    .product-side { width:50%; }
+    .list-item, .list-key { width:50%; max-width: 50%; flex: 0 0 50%;}
+}
+@media screen and (max-width: 600px){
+    .product-side { width:50%; }
+}

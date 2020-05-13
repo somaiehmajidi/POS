@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';  
+import { Injectable, EventEmitter} from '@angular/core';  
 import { Observable, of } from 'rxjs';
 
 import { Product } from '../interfaces/Product';
@@ -26,6 +26,14 @@ export class DataService {
             }
           }
         return this.categories;
+    }
+
+    searchProducts(searchTerm: string){
+        var matchingProducts = PRODUCTS.filter(product => 
+            product.category.indexOf(searchTerm) > -1);
+            console.log(matchingProducts);
+            this.products = matchingProducts;
+            return matchingProducts;
     }
 
 }

@@ -33,3 +33,6 @@
 .selectedItem{
     background-color: #eee;
 }
+@media screen and (max-width: 768px) {
+    .cart-side { width:50%; max-width: 50%;}
+}
