@@ -14,6 +14,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { QuickKeyModalComponent } from './products/quick-key-modal/quick-key-modal.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,7 @@ import { QuickKeyModalComponent } from './products/quick-key-modal/quick-key-mod
     FilterPipe,
     QuickkeyComponent,
     CategoriesComponent,
-    QuickKeyModalComponent,
+    QuickKeyModalComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +34,7 @@ import { QuickKeyModalComponent } from './products/quick-key-modal/quick-key-mod
     MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [QuickKeyModalComponent]
 })
 export class AppModule { }

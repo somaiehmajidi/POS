@@ -19,6 +19,8 @@ export class ProductsComponent implements OnInit {
 
   searchTxt: string = '';
 
+  categories: string[] = [];
+
   constructor(private dataService: DataService,
               private cartService: CartService,
               public dialog: MatDialog) {}
@@ -27,6 +29,10 @@ export class ProductsComponent implements OnInit {
     this.dataService.getProducts()
       .subscribe( products => {
       this.products = products;
+    });
+    this.dataService.getCategories()
+    .subscribe(cats =>{
+      this.categories = cats;
     })
   }
 
@@ -39,7 +45,9 @@ export class ProductsComponent implements OnInit {
   }
 
   addKey():void{
-    this.dialog.open(QuickKeyModalComponent);
+    this.dialog.open(QuickKeyModalComponent,{
+      width: '50%'
+    });
   }
 
 }
