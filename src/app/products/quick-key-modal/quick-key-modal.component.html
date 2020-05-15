@@ -7,8 +7,7 @@
     <hr>
     <form #addKey="ngForm" (ngSubmit)="onAdd(addKey.value)">
          <div class="row">
-            <div class="col-md-12">
-            
+            <div class="col-md-12">           
                 <div class="form-group">
                     <label for="title">عنوان</label>
                     <input 
@@ -32,7 +31,7 @@
                     multiple
                     >
                         <option *ngFor = "let product of products" 
-                        value="{{product.name}}">{{product.name}}</option>
+                        [value]= "product">{{product.name}}</option>
                     </select>
                 </div>
             </div>

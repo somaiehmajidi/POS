@@ -9,8 +9,6 @@ import { Product, Category } from './product.model';
 
 export class ProductService {
 
-    products: Product[] = [];
-
     getCategories(){
         return CATEGORIES;
     }
@@ -20,10 +18,8 @@ export class ProductService {
     }
 
     addCategory(id: number, name: string, products: Product[]){
-        id = CATEGORIES.length;
-        id += 2;
         let category = {id, name, products};
-        CATEGORIES.push(category)
+        CATEGORIES.push(category);
     }
 
     getProducts(){
@@ -31,9 +27,16 @@ export class ProductService {
         CATEGORIES.forEach(function (element){
             products = products.concat(element.products);
         })
-        //this.products = products;
         return products;
     }
+
+    createQuickKey(title: string, items:any[]){
+        let id = CATEGORIES.length;
+        id ++;
+        this.addCategory(id, title, items)
+        //console.log(CATEGORIES);
+    }
+
 }
 
 const CATEGORIES:Category[] = [

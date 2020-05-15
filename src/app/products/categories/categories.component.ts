@@ -10,8 +10,8 @@ import { Product } from '../../interfaces/Product';
 export class CategoriesComponent implements OnInit {
 
   @Input() data: string[];
-  searchTerm: string = "";
-  foundProducts: Product[];
+  // searchTerm: string = "";
+  // foundProducts: Product[];
 
   constructor(private dataService: DataService) { }
 
@@ -21,9 +21,9 @@ export class CategoriesComponent implements OnInit {
     // });
   }
 
-  searchProducts(searchTerm: string){
-    this.foundProducts = this.dataService.searchProducts(searchTerm)
-  }
+  // searchProducts(searchTerm: string){
+  //   this.foundProducts = this.dataService.searchProducts(searchTerm)
+  // }
 
   
 

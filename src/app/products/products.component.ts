@@ -1,12 +1,13 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 //import { Product } from '../interfaces/Product';
 //import { DataService } from '../services/data.service';
-//import { CartService } from '../services/cart.service';
+
 import { MatDialog } from '@angular/material/dialog';
 import { QuickKeyModalComponent } from './quick-key-modal/quick-key-modal.component';
 
 import { Product, Category } from '../shared/product.model';
-import { ProductService } from '../shared/product.service'
+import { ProductService } from '../shared/product.service';
+import { CartService } from '../shared/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -25,31 +26,23 @@ export class ProductsComponent implements OnInit {
 
   constructor(private productService: ProductService,
               //private dataService: DataService,
-              //private cartService: CartService,
+              private cartService: CartService,
               public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    // this.dataService.getProducts()
-    //   .subscribe( products => {
-    //   this.products = products;
-    // });
-    // this.dataService.getCategories()
-    // .subscribe(cats =>{
-    //   this.categories = cats;
-    // })
     this.categories = this.productService.getCategories();
     this.products = this.productService.getProducts();
   }
 
-  // addToCart(product){
-  //   this.cartService.addToCart(product);
-  // }
+  addToCart(product){
+    this.cartService.addToCart(product);
+  }
 
   clearSearch(){
     this.inputElement.nativeElement.value = '';
   }
 
-  addKey():void{
+  addCategory():void{
     this.dialog.open(QuickKeyModalComponent,{
       width: '50%'
     });

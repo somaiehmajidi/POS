@@ -1,9 +1,14 @@
-<div *ngFor = "let cat of data">
-    {{cat}}
-</div>
-<!-- <form id="searchForm" (ngSubmit)="searchProducts(searchTerm)">
-    <div>
-        <input [(ngModel)]="searchTerm" name="searchTerm" type="text" placeholder="Search Categories">
-        <button class="btn-sm btn-primary">Search</button>
+<div class="row border-bottom" style="margin: 10px 0px; padding-bottom: 10px;">
+    <div class="col-lg-12">
+        <div class="btn-toolbar" role="toolbar">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-link">
+                <i class="fa fa-home"></i>
+            </button>
+            <div class="btn-group" role="group" *ngFor="let category of data">
+                <button type="button" class="btn btn-link">{{category.name}}</button>
+            </div>
+        </div>
+        </div>
     </div>
-</form> -->
+</div>

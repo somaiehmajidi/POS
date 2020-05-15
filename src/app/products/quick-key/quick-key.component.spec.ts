@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QuickkeyComponent } from './quickkey.component';
+import { QuickkeyComponent } from './quick-key.component';
 
 describe('QuickkeyComponent', () => {
   let component: QuickkeyComponent;
