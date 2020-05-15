@@ -1,4 +1,4 @@
-<div class="product-side">
+<!-- <div class="product-side">
     <div class="container">
         <div class="row" style="margin-top: 55px">
             <div class="col-md-12 product-bar">
@@ -41,5 +41,24 @@
             </div>   
         </div> 
         <app-categories [data]="categories"></app-categories>
+    </div>
+</div> -->
+<div class="product-side">
+    <div class="container" style="margin-top: 65px">
+        <div class="row" >
+            <div class="col-md-12">
+                <div class="alert alert-dark" role="alert">نتیجه ای یافت نشد!</div>
+            </div>
+        </div>
+        <div class="row">
+            <div *ngFor = "let product of products"
+            class="col-lg-2 col-md-3 col-sm-4 col-12">
+            <div class="list-item">
+                <img src="{{product.imageUrl}}" />  
+                <div class="name">{{product.name}}</div>
+                <span class="badge badge-danger">{{product.price | number:'1.0'}}</span>
+            </div>
+            </div>              
+        </div>
     </div>
 </div>

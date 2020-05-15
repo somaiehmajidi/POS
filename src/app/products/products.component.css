@@ -11,38 +11,29 @@
     font-size: 12px;
     line-height:18px;
 }
-.list-item a{
-    display: block;
-    background-color: white;
-    margin-bottom:10px;
+.list-item{
     position: relative;
+    background-color: white;
     border: 1px solid #ccc;
     padding: 3px;
+    margin-bottom: 10px;
 }
-    .list-item a:hover,
-    .list-item a:focus{
+    .list-item:hover,
+    .list-item:focus{
         cursor: pointer;
     }
-    .list-item a span:first-child{
-        display: inline-block;
-        height: 98px;
-        overflow: hidden;
-    }
-    .list-item a .name{
+    .list-item .name{
         display: block;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden; 
     }
-    .list-item a .price{
+    .list-item .badge{
         display: block;
         position: absolute;
         top:10px;
         left:10px;
-        background-color: #fa2570;
-        color: white;
-        padding: 0px 5px;
-        border-radius: 5px;
+        font-size: 12px;
     }
 .product-bar{
     border-bottom: 1px solid #ccc;

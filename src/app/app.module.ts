@@ -13,6 +13,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { QuickKeyModalComponent } from './products/quick-key-modal/quick-key-modal.component';
+import { ProductService } from './shared/product.service';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { QuickKeyModalComponent } from './products/quick-key-modal/quick-key-mod
     NoopAnimationsModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent],
   entryComponents: [QuickKeyModalComponent]
 })
