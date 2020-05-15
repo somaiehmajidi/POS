@@ -22,7 +22,7 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   categories: Category[] = [];
 
-  //searchTxt: string = '';
+  searchTxt: string = '';
 
   constructor(private productService: ProductService,
               //private dataService: DataService,
@@ -46,6 +46,9 @@ export class ProductsComponent implements OnInit {
     this.dialog.open(QuickKeyModalComponent,{
       width: '50%'
     });
+  }
+  getCategory(category){
+    this.searchTxt = category;
   }
 
 }

@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { DataService } from '../../services/data.service';
-import { Product } from '../../interfaces/Product';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ProductService } from '../../shared/product.service';
+//import { Product } from '../../interfaces/Product';
 
 @Component({
   selector: 'app-categories',
@@ -10,10 +10,11 @@ import { Product } from '../../interfaces/Product';
 export class CategoriesComponent implements OnInit {
 
   @Input() data: string[];
+  @Output() eventClick = new EventEmitter()
   // searchTerm: string = "";
   // foundProducts: Product[];
 
-  constructor(private dataService: DataService) { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
     // this.dataService.getCategories().subscribe(cats => {
@@ -25,6 +26,11 @@ export class CategoriesComponent implements OnInit {
   //   this.foundProducts = this.dataService.searchProducts(searchTerm)
   // }
 
-  
+  filterGroup(category){
+    //this.productService.filter(category);
+    //alert(category.name);
+    this.eventClick.emit(category.name)
+    //return category;
+  }
 
 }

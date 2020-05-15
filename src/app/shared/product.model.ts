@@ -9,4 +9,5 @@ export interface Product{
     price: number
     unit: number
     imageUrl: string
+    category?: string
 }

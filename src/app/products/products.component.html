@@ -45,7 +45,7 @@
 </div> -->
 <div class="product-side">
     <div class="container" style="margin-top: 65px">
-        <app-categories [data]="categories"></app-categories>
+        <app-categories [data]="categories" (eventClick) = "getCategory($event)"></app-categories>
         <div *ngIf = "products as result">
             <div class="row" *ngIf="result.length === 0">
                 <div class="col-md-12">
@@ -58,7 +58,7 @@
                         <app-quick-key (click)="addCategory()"></app-quick-key>
                     </div>
                 </div>
-                <div *ngFor = "let product of result"
+                <div *ngFor = "let product of result | filter: searchTxt: 'category'"
                 (click) = "addToCart(product)"
                 class="col-lg-2 col-md-3 col-sm-4 col-12">
                 <div class="list-item">

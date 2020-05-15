@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductService } from '../../shared/product.service';
+import { Title } from '@angular/platform-browser';
 //import { Key } from '../../interfaces/Key';
 
 @Component({
@@ -20,9 +21,11 @@ export class QuickKeyModalComponent implements OnInit {
     this.products =this.productService.getProducts();
   }
 
-  onAdd(keyData: {title: string, items: string[]}){
+  onAdd(keyData: {title: string, items:any[]}){
+    for (const item of keyData.items){
+      item.category = keyData.title;
+    }
     this.productService.createQuickKey(keyData.title, keyData.items);
-    console.log(keyData);
     this.dialogRef.close();
   }
   onCancel(){
