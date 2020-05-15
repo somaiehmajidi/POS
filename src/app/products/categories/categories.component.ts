@@ -15,10 +15,6 @@ export class CategoriesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // searchProducts(searchTerm: string){
-  //   this.foundProducts = this.dataService.searchProducts(searchTerm)
-  // }
-
   filterGroup(category){
     if (category === 'home'){
       this.eventClick.emit('');

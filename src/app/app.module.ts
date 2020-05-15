@@ -15,6 +15,7 @@ import { QuickKeyModalComponent } from './products/quick-key-modal/quick-key-mod
 import { ProductService } from './shared/product.service';
 
 import { FilterPipe } from './products/filter.pipe';
+import { EditCartComponent } from './cart/edit-cart/edit-cart.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { FilterPipe } from './products/filter.pipe';
     FilterPipe,
     QuickkeyComponent,
     CategoriesComponent,
-    QuickKeyModalComponent
+    QuickKeyModalComponent,
+    EditCartComponent
   ],
   imports: [
     BrowserModule,

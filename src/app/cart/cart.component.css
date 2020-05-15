@@ -21,6 +21,14 @@
         color: #888;
         font-size: 12px;
     }
+    .total{
+        padding:10px 5px 0px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .tax{
+        padding: 5px;
+    }
 .empty-cart{
     color: #ccc;
     text-align: center;
