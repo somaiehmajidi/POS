@@ -48,7 +48,7 @@ const CATEGORIES:Category[] = [
                 name: 'پاستا کاپوناتا', 
                 price: 30000, 
                 unit: 5, 
-                imageUrl: '/assets/images/caponata-pasta.jpg',
+                imageUrl: './assets/images/caponata-pasta.jpg',
                 category: 'پاستا'
             },
             {
@@ -56,7 +56,7 @@ const CATEGORIES:Category[] = [
                 name: 'فتوچینی آلفردو', 
                 price: 34000, 
                 unit: 5, 
-                imageUrl: '/assets/images/fettucine-alfredo.jpg',
+                imageUrl: './assets/images/fettucine-alfredo.jpg',
                 category: 'پاستا'
             },
             {
@@ -64,7 +64,7 @@ const CATEGORIES:Category[] = [
                 name: 'پاستا قارچ', 
                 price: 40000, 
                 unit: 5, 
-                imageUrl: '/assets/images/mushroom-pasta.jpg',
+                imageUrl: './assets/images/mushroom-pasta.jpg',
                 category: 'پاستا'
             }
         ]
@@ -78,7 +78,7 @@ const CATEGORIES:Category[] = [
                 name: 'پیتزای رنگین کمانی', 
                 price: 50000, 
                 unit: 5, 
-                imageUrl: '/assets/images/rainbow-pizza.jpg',
+                imageUrl: './assets/images/rainbow-pizza.jpg',
                 category: 'پیتزا'
             },
             {
@@ -86,7 +86,7 @@ const CATEGORIES:Category[] = [
                 name: 'پیتزای سیب زمینی و سبزیجات', 
                 price: 24000, 
                 unit: 5, 
-                imageUrl: '/assets/images/potato-pizza.jpg',
+                imageUrl: './assets/images/potato-pizza.jpg',
                 category: 'پیتزا'
             }
         ]
@@ -100,7 +100,7 @@ const CATEGORIES:Category[] = [
                 name: 'سوپ کدو', 
                 price: 18500, 
                 unit: 5, 
-                imageUrl: '/assets/images/pumpkin-soup.jpg',
+                imageUrl: './assets/images/pumpkin-soup.jpg',
                 category: 'سوپ'
             },
             {
@@ -108,7 +108,7 @@ const CATEGORIES:Category[] = [
                 name: 'سوپ مرغ', 
                 price: 20000, 
                 unit: 5, 
-                imageUrl: '/assets/images/chicken-soup.jpg',
+                imageUrl: './assets/images/chicken-soup.jpg',
                 category: 'سوپ'
             }
         ]
@@ -122,7 +122,7 @@ const CATEGORIES:Category[] = [
                 name: 'سالاد سزار', 
                 price: 28000, 
                 unit: 5, 
-                imageUrl: '/assets/images/caesar-salad.jpg',
+                imageUrl: './assets/images/caesar-salad.jpg',
                 category: 'سالاد'
             },
             {
@@ -130,7 +130,7 @@ const CATEGORIES:Category[] = [
                 name: 'سالاد سیب زمینی', 
                 price: 18000, 
                 unit: 5, 
-                imageUrl: '/assets/images/potato-salad.jpg',
+                imageUrl: './assets/images/potato-salad.jpg',
                 category: 'سالاد'
             },
             {
@@ -138,7 +138,7 @@ const CATEGORIES:Category[] = [
                 name: 'سالاد آواکادو', 
                 price: 33000, 
                 unit: 5, 
-                imageUrl: '/assets/images/avocado-salad.jpg',
+                imageUrl: './assets/images/avocado-salad.jpg',
                 category: 'سالاد'
             }
         ]
