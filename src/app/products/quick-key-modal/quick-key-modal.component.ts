@@ -1,8 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ProductService } from '../../shared/product.service';
-import { Title } from '@angular/platform-browser';
-//import { Key } from '../../interfaces/Key';
 
 @Component({
   selector: 'app-quick-key-modal',
@@ -12,20 +10,20 @@ import { Title } from '@angular/platform-browser';
 export class QuickKeyModalComponent implements OnInit {
 
   products;
+  newKey:{title:string, items:any[]}; 
 
   constructor(public dialogRef: MatDialogRef<QuickKeyModalComponent>,
-              //@Inject(MAT_DIALOG_DATA),
               private productService: ProductService){ }
 
   ngOnInit(): void {
     this.products =this.productService.getProducts();
   }
 
-  onAdd(keyData: {title: string, items:any[]}){
-    for (const item of keyData.items){
-      item.category = keyData.title;
+  onAdd(key: {title: string, items:any[]}){
+    for (const item of key.items){
+      item.category = key.title;
     }
-    this.productService.createQuickKey(keyData.title, keyData.items);
+    this.productService.createQuickKey(key.title, key.items);
     this.dialogRef.close();
   }
   onCancel(){

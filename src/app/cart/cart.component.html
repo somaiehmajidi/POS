@@ -1,5 +1,10 @@
 <div class="cart-side" style="background-color: #fff">
     <div class="container cart-placeHolder">
+        <div class="row border-bottom">
+            <button (click)="addCustomer()">
+                <i class="fa fa-user"></i>
+            </button>
+        </div>
         <div class="row" *ngIf = "orders.length === 0">
             <div class="col-md-12 empty-cart">
                 <i class="fa fa-shopping-cart"></i>
@@ -41,15 +46,12 @@
             </div>
         </div>
     </div>
-    <!--<div class="container border-top" style="margin-top: 25px">
-        <div class="row">
-            <app-customers></app-customers>
-        </div>
+    <div class="container border-top" style="margin-top: 25px">
         <div class="row">
             <app-edit-cart></app-edit-cart>
         </div> 
         <div class="row">
             <app-payment></app-payment>
         </div>
-    </div>-->
+    </div>
 </div>

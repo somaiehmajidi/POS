@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../shared/cart.service';
 import { Invoice, Order } from '../shared/invoice.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +15,8 @@ export class CartComponent implements OnInit {
   //total: number = 0;
   selectedItem: any;
   
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService,
+              private router: Router) { }
 
   ngOnInit(){
     this.invoices = this.cartService.invoices;
@@ -23,6 +25,10 @@ export class CartComponent implements OnInit {
 
   onSelect(order: Order): void{
     this.selectedItem = order;
+  }
+
+  addCustomer(){
+    this.router.navigate(['/customers']);
   }
 
   //this.selectedItem = this.orders.slice(-1)[0];

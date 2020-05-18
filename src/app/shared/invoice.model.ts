@@ -15,9 +15,15 @@ export interface Order{
     unit: number
 }
 export interface Customer{
-    cId: number
+    id: number
     name: string
     phone: string
-    add?: string
+    email?: string
+    add?: {
+        state: string
+        city: string
+        street: string
+        postcode?: number
+    }
     imageUrl?: string
 }

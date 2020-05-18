@@ -18,6 +18,7 @@ import { FilterPipe } from './products/filter.pipe';
 import { EditCartComponent } from './cart/edit-cart/edit-cart.component';
 import { CustomersComponent } from './customers/customers.component';
 import { PaymentComponent } from './cart/payment/payment.component';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { PaymentComponent } from './cart/payment/payment.component';
     QuickKeyModalComponent,
     EditCartComponent,
     CustomersComponent,
-    PaymentComponent
+    PaymentComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

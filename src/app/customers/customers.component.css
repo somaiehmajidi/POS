@@ -1,0 +1,25 @@
+.container{
+    direction: rtl;
+    text-align: right;
+}
+.customer-bar{
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+}
+table{
+    background-color: white;
+    /* margin: 1rem 0px; */
+    color: #888;
+}
+    table thead{
+        font-size: 15px;
+    }
+    table tbody tr{
+        cursor: pointer;
+    }
+.customer-info{
+    border: 1px solid #ccc;
+    border-bottom: 3px solid #007bff;
+    padding: 1rem;
+    color: #888;
+}

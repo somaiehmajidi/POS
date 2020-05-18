@@ -20,6 +20,7 @@ export class ProductService {
     addCategory(id: number, name: string, products: Product[]){
         let category = {id, name, products};
         CATEGORIES.push(category);
+        console.log(CATEGORIES)
     }
 
     getProducts(){
