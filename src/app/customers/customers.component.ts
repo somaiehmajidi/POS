@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../shared/invoice.model';
 import { CustomerService } from '../shared/customer.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-customers',
@@ -12,7 +13,8 @@ export class CustomersComponent implements OnInit {
   customers: Customer[] = [];
   selectedCustomer;
   
-  constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService,
+              private location: Location) { }
 
   ngOnInit(): void {
     this.customers = this.customerService.getCustomers()
@@ -24,6 +26,10 @@ export class CustomersComponent implements OnInit {
   
   selectCustomer(customer){
     this.selectedCustomer = customer;
+  }
+
+  goBack(){
+    this.location.back();
   }
 
 
