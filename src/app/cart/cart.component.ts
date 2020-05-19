@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../shared/cart.service';
-import { Invoice, Order } from '../shared/invoice.model';
+import { Invoice, Order, Customer } from '../shared/invoice.model';
 import { Router } from '@angular/router';
+import { CustomerService } from '../shared/customer.service';
 
 @Component({
   selector: 'app-cart',
@@ -14,13 +15,18 @@ export class CartComponent implements OnInit {
   invoices: Invoice[] = []
   //total: number = 0;
   selectedItem: any;
+  assignedCustomer: Customer;
   
   constructor(private cartService: CartService,
+              private customerService: CustomerService,
               private router: Router) { }
 
   ngOnInit(){
     this.invoices = this.cartService.invoices;
     this.orders = this.cartService.orders;
+    if (this.customerService.selectedCustomer){
+      this.assignedCustomer = this.customerService.selectedCustomer;
+    }  
   }
 
   onSelect(order: Order): void{

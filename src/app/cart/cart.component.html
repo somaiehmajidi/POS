@@ -1,9 +1,11 @@
 <div class="cart-side" style="background-color: #fff">
     <div class="container cart-placeHolder">
         <div class="row border-bottom">
-            <button (click)="addCustomer()">
-                <i class="fa fa-user"></i>
-            </button>
+            <div (click)="addCustomer()" class="cart-customer">
+                <div class="pull-right"><i class="fa fa-user-circle"></i></div>
+                <div class="name pull-right" *ngIf="!assignedCustomer">انتخاب مشتری</div>
+                <div class="name pull-right" *ngIf="assignedCustomer">{{assignedCustomer.name}}</div>
+            </div>
         </div>
         <div class="row" *ngIf = "orders.length === 0">
             <div class="col-md-12 empty-cart">
@@ -46,12 +48,12 @@
             </div>
         </div>
     </div>
-    <div class="container border-top" style="margin-top: 25px">
+    <!-- <div class="container border-top" style="margin-top: 25px">
         <div class="row">
             <app-edit-cart></app-edit-cart>
         </div> 
         <div class="row">
             <app-payment></app-payment>
         </div>
-    </div>
+    </div> -->
 </div>

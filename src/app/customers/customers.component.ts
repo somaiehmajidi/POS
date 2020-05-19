@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
 export class CustomersComponent implements OnInit {
 
   customers: Customer[] = [];
-  selectedCustomer;
+  selectedCustomer: Customer;
   
   constructor(private customerService: CustomerService,
               private location: Location) { }
@@ -32,6 +32,11 @@ export class CustomersComponent implements OnInit {
     this.location.back();
   }
 
+  setCustomer(customer){
+    this.customerService.setCustomer(customer);
+    //console.log(selectedCustomer)
+    this.location.back();
+  }
 
 
 }

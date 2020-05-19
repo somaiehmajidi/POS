@@ -22,16 +22,63 @@
             </button> 
         </div>
     </div>
-    <div class="row">
+    <!-- <div class="row" style="display: none;">
         <div class="col-lg-12">
             <div class="add-customer">
-                add new customer
+                <form autocomplete="off" #addForm="ngForm" novalidate>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input type="file" class="form-control">
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-2"><label for="name">نام</label></div>
+                                <div class="col-md-10"><input id="name" class="form-control"></div>
+                                
+                                
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-2"><label for="phone">شماره همراه</label></div>
+                                <div class="col-md-10"><input id="phone" class="form-control"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row form-group">
+                                <div class="col-md-2"><label for="state">نام استان</label></div>
+                                <div class="col-md-10"><select id="state" class="form-control">
+                                    <option>تهران</option>
+                                </select></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-2"><label id="city">نام شهر</label></div>
+                                <div class="col-md-10"><select id="city" class="form-control">
+                                    <option>تهران</option>
+                                    <option>دماوند</option>
+                                    <option>شهرری</option>
+                                </select></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-2"><label id="add">آدرس</label></div>
+                                <div class="col-md-10"><input type="text" class="form-control"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <span><button class="btn-sm btn-outline-primary" type="submit">ثبت مشتری</button></span>
+                    <span><button class="btn-sm btn-outline-secondary" type="button">لغو</button></span>
+                </form>
             </div>
         </div>
     </div>
+    <div class="row" style="display: none;">
+        <div class="col-lg-12">
+            <div class="edit-customer">
+                edit customer
+            </div>
+        </div>
+    </div> -->
     <div class="row">
         <div class="col-lg-12">
-            <div *ngIf = "selectedCustomer" class="customer-info">
+            <div *ngIf="selectedCustomer" class="customer-info">
                 <div class="row">
                     <div class="col-lg-2">
                         <div *ngIF = "selectedCustomer.imageUrl">
@@ -49,7 +96,7 @@
                     <div class="col-lg-4 text-left align-bottom">
                         <button class="btn-sm btn-outline-primary">ویرایش اطلاعات</button>
                          | 
-                        <button class="btn-sm btn-primary">انتخاب مشتری</button>
+                        <button class="btn-sm btn-primary" (click)=setCustomer(selectedCustomer)>انتخاب مشتری</button>
                     </div>
                 </div>
             </div>
@@ -63,7 +110,8 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let customer of customers" 
-                    (click)="selectCustomer(customer)">
+                    (click)="selectCustomer(customer)" 
+                    [class.active]="customer === selectedCustomer">
                         <th>{{customer.name}}</th>
                         <th>{{customer.add.state}}، {{customer.add.city}}، {{customer.add.street}}</th>
                         <th>{{customer.phone}}</th>

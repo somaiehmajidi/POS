@@ -34,7 +34,7 @@ import { MainComponent } from './main/main.component';
     EditCartComponent,
     CustomersComponent,
     PaymentComponent,
-    MainComponent
+    MainComponent,
   ],
   imports: [
     BrowserModule,

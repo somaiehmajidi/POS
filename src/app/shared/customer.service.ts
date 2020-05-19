@@ -8,7 +8,7 @@ import { Customer } from '../shared/invoice.model';
 export class CustomerService {
 
     customers: Customer[] = [];
-    selectedCustomer;
+    selectedCustomer: Customer;
 
     getCustomers(){
         return CUSTOMERS
@@ -26,6 +26,10 @@ export class CustomerService {
         newCustomer:{id: number, name: string, phone: string, add:{state,city,street}}
     ){
         CUSTOMERS.push(newCustomer)
+    }
+
+    setCustomer(customer){
+        this.selectedCustomer = customer;
     }
 
 }

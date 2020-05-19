@@ -46,6 +46,22 @@
     /* height: 350px; */
     overflow: scroll;
 }
+.cart-customer{
+    padding: 1rem; 
+}
+    .cart-customer:hover,
+    .cart-customer:focus{
+        cursor: pointer;
+    }
+    .fa-user-circle{
+        font-size: 3rem;
+        color: #888;        
+    }
+    .name{
+        font-size: 18px;        
+        line-height: 3rem;
+        padding-right: 0.5rem;
+    }
 @media screen and (max-width: 768px) {
     .cart-side { width:50%; max-width: 50%;}
 }
