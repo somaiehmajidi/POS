@@ -14,7 +14,7 @@ export class CartComponent implements OnInit {
   orders: Order[] = [];
   invoices: Invoice[] = []
   //total: number = 0;
-  selectedItem: any;
+  selectedItem: Order;
   assignedCustomer: Customer;
   
   constructor(private cartService: CartService,
