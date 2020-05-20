@@ -13,6 +13,7 @@ export interface Order{
     price: number 
     totalPrice: number
     unit: number
+    discount?: number
 }
 export interface Customer{
     id: number

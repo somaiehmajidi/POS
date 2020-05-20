@@ -13,7 +13,7 @@ export class CartComponent implements OnInit {
 
   orders: Order[] = [];
   invoices: Invoice[] = []
-  //total: number = 0;
+  total: number = 0;
   selectedItem: Order;
   assignedCustomer: Customer;
   
@@ -26,11 +26,13 @@ export class CartComponent implements OnInit {
     this.orders = this.cartService.orders;
     if (this.customerService.selectedCustomer){
       this.assignedCustomer = this.customerService.selectedCustomer;
-    }  
+    }
   }
 
   onSelect(order: Order): void{
-    this.selectedItem = order;
+    //this.selectedItem = order;
+    this.cartService.onSelect(order);
+    this.selectedItem = this.cartService.selectedItem;
   }
 
   addCustomer(){
@@ -38,11 +40,11 @@ export class CartComponent implements OnInit {
   }
 
   //this.selectedItem = this.orders.slice(-1)[0];
-   
-  // ngAfterContentChecked(){
-  //   this.total = this.orders.reduce(function(prev, cur){
-  //      return prev+cur.totalPrice;
-  //     }, 0);
-  // }
+  
+  ngAfterContentChecked(){
+    this.total = this.orders.reduce(function(prev, cur){
+       return prev+cur.totalPrice;
+      }, 0);
+  }
 
 }
