@@ -13,6 +13,10 @@ export class CustomersComponent implements OnInit {
   customers: Customer[] = [];
   selectedCustomer: Customer;
   
+  status: boolean = false;
+  editStatus: boolean = false;
+  selectStatus: boolean = false;
+
   constructor(private customerService: CustomerService,
               private location: Location) { }
 
@@ -22,10 +26,14 @@ export class CustomersComponent implements OnInit {
 
   addCustomer(customer){
     this.customerService.addCustomer(customer);
+    this.status = false;
   }
   
   selectCustomer(customer){
     this.selectedCustomer = customer;
+    this.selectStatus = true;
+    this.status = false;
+    this.editStatus = false;
   }
 
   goBack(){
@@ -34,9 +42,27 @@ export class CustomersComponent implements OnInit {
 
   setCustomer(customer){
     this.customerService.setCustomer(customer);
-    //console.log(selectedCustomer)
     this.location.back();
   }
 
+  displayAppAdd(){
+    this.status = true;
+    this.editStatus = false;
+    this.selectStatus = false;
+  }
+
+  displayAppEdit(){
+    this.editStatus = true;
+    this.status = false;
+    this.selectStatus = false;
+  }
+
+  getStatus(status){
+    this.status = status;
+  }
+
+  getEditStatus(status){
+    this.editStatus = status;
+  }
 
 }

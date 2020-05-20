@@ -23,13 +23,21 @@ export class CustomerService {
     }
 
     addCustomer(
-        newCustomer:{id: number, name: string, phone: string, add:{state,city,street}}
+        newCustomer:{id: number, name: string, phone: string, add?:{state,city,street}}
     ){
         CUSTOMERS.push(newCustomer)
     }
 
     setCustomer(customer){
         this.selectedCustomer = customer;
+    }
+
+    editCustomer(customer){
+        const result = CUSTOMERS.find(user => user.name === customer.name)
+        let index = CUSTOMERS.indexOf(result);
+    
+        customer.id = CUSTOMERS[index].id;
+        CUSTOMERS[index] = customer;
     }
 
 }

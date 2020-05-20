@@ -1,0 +1,68 @@
+<div class="add-customer">
+    <form autocomplete="off" #newForm="ngForm" novalidate (ngSubmit)="newCustomer(newForm.value)">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    Uploding profile image!
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2"><label for="name">نام</label></div>
+                    <div class="col-md-10">
+                        <input id="name" name="customerName" class="form-control"
+                        placeholder="نام..."
+                        (ngModel)="customerName" required>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2"><label for="phone">شماره همراه</label></div>
+                    <div class="col-md-10">
+                        <input id="phone" name="customerPhone" class="form-control"
+                        placeholder="شماره همراه..."
+                        (ngModel)="customerPhone" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row form-group">
+                    <div class="col-md-2"><label for="state">نام استان</label></div>
+                    <div class="col-md-10">
+                        <select id="state" class="form-control" name="customerState"
+                        (ngModel)="customerState">
+                            <option>تهران</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2"><label id="city">نام شهر</label></div>
+                    <div class="col-md-10">
+                        <select id="city" class="form-control" name="customerCity"
+                        (ngModel)="customerCity">
+                            <option>تهران</option>
+                            <option>دماوند</option>
+                            <option>شهرری</option>
+                        </select>
+                </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2"><label id="add">آدرس</label></div>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="customerStreet"
+                    (ngModel)="customerStreet">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-left">
+            <span class="btn-placeholder">
+                <button class="btn-sm btn-outline-secondary" 
+                type="button"
+                (click)="onCencel()">لغو</button>
+            </span>
+            <span class="btn-placeholder">
+                <button class="btn-sm btn-outline-primary" 
+                type="submit"
+                [disabled]="newForm.invalid" >ثبت مشتری</button>
+            </span>
+        </div>
+    </form>
+</div>

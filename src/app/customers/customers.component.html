@@ -1,7 +1,7 @@
 <div class="container" style="margin-top: 65px;">
     <div class="row customer-bar">
         <div class="col-lg-4">
-            <button class="btn-sm btn-primary">
+            <button class="btn-sm btn-primary" (click)="displayAppAdd()">
                 <span><i class="fa fa-user-plus"></i></span>
                 <span>مشتری جدید</span>
             </button>
@@ -22,63 +22,11 @@
             </button> 
         </div>
     </div>
-    <!-- <div class="row" style="display: none;">
-        <div class="col-lg-12">
-            <div class="add-customer">
-                <form autocomplete="off" #addForm="ngForm" novalidate>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input type="file" class="form-control">
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-md-2"><label for="name">نام</label></div>
-                                <div class="col-md-10"><input id="name" class="form-control"></div>
-                                
-                                
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-md-2"><label for="phone">شماره همراه</label></div>
-                                <div class="col-md-10"><input id="phone" class="form-control"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="row form-group">
-                                <div class="col-md-2"><label for="state">نام استان</label></div>
-                                <div class="col-md-10"><select id="state" class="form-control">
-                                    <option>تهران</option>
-                                </select></div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-md-2"><label id="city">نام شهر</label></div>
-                                <div class="col-md-10"><select id="city" class="form-control">
-                                    <option>تهران</option>
-                                    <option>دماوند</option>
-                                    <option>شهرری</option>
-                                </select></div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-md-2"><label id="add">آدرس</label></div>
-                                <div class="col-md-10"><input type="text" class="form-control"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <span><button class="btn-sm btn-outline-primary" type="submit">ثبت مشتری</button></span>
-                    <span><button class="btn-sm btn-outline-secondary" type="button">لغو</button></span>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="row" style="display: none;">
-        <div class="col-lg-12">
-            <div class="edit-customer">
-                edit customer
-            </div>
-        </div>
-    </div> -->
+    <app-add-customer *ngIf="status" (eventClick)="getStatus($event)"></app-add-customer>
+    <app-edit-customer *ngIf="editStatus" (eventClick)="getEditStatus($event)" [data]="selectedCustomer"></app-edit-customer>
     <div class="row">
         <div class="col-lg-12">
-            <div *ngIf="selectedCustomer" class="customer-info">
+            <div *ngIf="selectStatus" class="customer-info">
                 <div class="row">
                     <div class="col-lg-2">
                         <div *ngIF = "selectedCustomer.imageUrl">
@@ -94,7 +42,7 @@
                             {{selectedCustomer.add.street}}</p>
                     </div>
                     <div class="col-lg-4 text-left align-bottom">
-                        <button class="btn-sm btn-outline-primary">ویرایش اطلاعات</button>
+                        <button class="btn-sm btn-outline-primary" (click)="displayAppEdit()">ویرایش اطلاعات</button>
                          | 
                         <button class="btn-sm btn-primary" (click)=setCustomer(selectedCustomer)>انتخاب مشتری</button>
                     </div>

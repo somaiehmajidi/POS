@@ -21,7 +21,6 @@ table{
         font-style: normal;
     }
 .customer-info,
-.add-customer,
 .edit-customer{
     border: 1px solid #ccc;
     border-bottom: 3px solid #007bff;
@@ -30,9 +29,6 @@ table{
 }
 button span{
     padding: 0px 0.2rem;
-}
-label{
-    line-height: 2rem;
 }
 .active{
     background-color: #007bff !important;

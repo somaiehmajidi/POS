@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,8 @@ import { EditCartComponent } from './cart/edit-cart/edit-cart.component';
 import { CustomersComponent } from './customers/customers.component';
 import { PaymentComponent } from './cart/payment/payment.component';
 import { MainComponent } from './main/main.component';
+import { AddCustomerComponent } from './customers/add-customer/add-customer.component';
+import { EditCustomerComponent } from './customers/edit-customer/edit-customer.component';
 
 
 @NgModule({
@@ -35,9 +38,12 @@ import { MainComponent } from './main/main.component';
     CustomersComponent,
     PaymentComponent,
     MainComponent,
+    AddCustomerComponent,
+    EditCustomerComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     NoopAnimationsModule,

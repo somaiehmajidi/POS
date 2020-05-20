@@ -1,0 +1,19 @@
+.edit-customer{
+    border: 1px solid #ccc;
+    border-bottom: 3px solid #007bff;
+    padding: 1rem;
+    color: #555;
+}
+.btn-placeholder{
+    display: inline-block;
+    padding: 0px 0.3rem;
+}
+label{
+    display: block;
+    line-height: 2rem;
+    text-align: left;
+}
+input,
+select{
+    font-size: 14px;
+}
