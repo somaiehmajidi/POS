@@ -58,7 +58,7 @@
                         <app-quick-key (click)="addCategory()"></app-quick-key>
                     </div>
                 </div>
-                <div *ngFor = "let product of result | filter: searchTxt: 'category'"
+                <div *ngFor = "let product of result | filter: searchCat: 'category'"
                 (click) = "addToCart(product)"
                 class="col-lg-2 col-md-3 col-sm-4 col-12">
                 <div class="list-item">

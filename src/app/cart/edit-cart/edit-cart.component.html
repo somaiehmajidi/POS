@@ -4,6 +4,9 @@
     </div> -->
     <table class="calculator-operator table table-bordered">
         <tr>
+            <td><button type="button" (click) = "getNumber('1')" value="1">1</button></td>
+            <td><button type="button" (click) = "getNumber('2')" value="2">2</button></td>
+            <td><button type="button" (click) = "getNumber('3')" value="3">3</button></td>
             <td>
                 <button type="btn button" 
                 (click) = "getOperand('qty')" 
@@ -11,17 +14,8 @@
                 value="qty"
                 [ngClass]="{'active': this.operator === 'qty'}">تعداد</button>
             </td>
-            <td><button type="button" (click) = "getNumber('1')" value="1">1</button></td>
-            <td><button type="button" (click) = "getNumber('2')" value="2">2</button></td>
-            <td><button type="button" (click) = "getNumber('3')" value="3">3</button></td>
         </tr>
         <tr>
-            <td>
-                <button type="button" 
-                (click) = "getOperand('disc')" 
-                class="operator" 
-                value="disc"
-                [ngClass]="{'active': this.operator === 'disc'}">تخفیف</button></td>
             <td>
                 <button type="button" (click) = "getNumber('4')" value="4">4</button>
             </td>
@@ -31,14 +25,15 @@
             <td>
                 <button type="button" (click) = "getNumber('6')" value="6">6</button>
             </td>
-        </tr>
-        <tr>
             <td>
                 <button type="button" 
-                (click) = "getOperand('price')" 
+                (click) = "getOperand('disc')" 
                 class="operator" 
-                value="price"
-                [ngClass]="{'active': this.operator === 'price'}">قیمت</button>            </td>
+                value="disc"
+                [ngClass]="{'active': this.operator === 'disc'}">تخفیف</button>
+            </td>
+        </tr>
+        <tr>
             <td>
                 <button type="button" (click) = "getNumber('7')" value="7">7</button>
             </td>
@@ -48,9 +43,15 @@
             <td>
                 <button type="button" (click) = "getNumber('9')" value="9">9</button>
             </td>
+            <td>
+                <button type="button" 
+                (click) = "getOperand('price')" 
+                class="operator" 
+                value="price"
+                [ngClass]="{'active': this.operator === 'price'}">قیمت</button>            
+            </td>
         </tr>
         <tr>
-            <td></td>
             <td><button type="button" (click) = "getDecimal()" class="decimal" value=".">.</button>
                 </td>
             <td><button type="button" (click) = "getNumber('0')" value="0">0</button>
@@ -58,8 +59,12 @@
             <td><button type="button" (click) = "remove()"  class="remove" value="remove">
                 <i class="fa fa-close"></i>
             </button></td>
+            <td></td>
         </tr>
         <!-- <button type="button" (click) = "getOperand('=')" class="equal-sign" value="=">=</button> -->
-        </table>
+    </table>
+    <div>
+        <div>custmer</div>
+        <div>payment</div>
     </div>
-  
+    </div>

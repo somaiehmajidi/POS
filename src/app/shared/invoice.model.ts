@@ -17,7 +17,8 @@ export interface Order{
 }
 export interface Customer{
     id: number
-    name: string
+    firstName: string
+    lastName?: string
     phone: string
     email?: string
     add?: {
@@ -25,6 +26,10 @@ export interface Customer{
         city: string
         street: string
         postcode?: number
+    }
+    location?: {
+        latitude: string
+        longitude: string
     }
     imageUrl?: string
 }

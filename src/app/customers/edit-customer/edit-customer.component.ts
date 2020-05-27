@@ -21,9 +21,10 @@ export class EditCustomerComponent implements OnInit {
   }
 
   editCustomer(formValuse){
-    let customer:{name, phone, add:{state, city, street} }
+    let customer:{firstName, lastName, phone, add:{state, city, street} }
     customer = {
-      name: formValuse.customerName, 
+      firstName: formValuse.customerFirstName, 
+      lastName: formValuse.customerLastName, 
       phone: formValuse.customerPhone,
       add:{state: formValuse.customerState , 
           city: formValuse.customerCity, 

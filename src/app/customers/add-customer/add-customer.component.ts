@@ -9,7 +9,12 @@ import { CustomerService } from '../../shared/customer.service';
 export class AddCustomerComponent implements OnInit {
 
   @Output() eventClick = new EventEmitter()
-  customerName;customerPhone;customerState;customerCity;customerStreet;
+  customerFirstName;
+  customerLastName;
+  customerPhone;
+  customerState;
+  customerCity;
+  customerStreet;
 
 
   constructor(private customerService: CustomerService) { }
@@ -18,10 +23,17 @@ export class AddCustomerComponent implements OnInit {
   }
 
   newCustomer(formValuse){
-    let customer:{id, name, phone, add:{state, city, street}};
+    let customer:{id, firstName, lastName, phone, add:{state, city, street}};
     customer = 
-    {id:6, name:formValuse.customerName, phone:formValuse.customerPhone, 
-      add:{state:formValuse.customerState, city: formValuse.customerCity, street: formValuse.customerStreet}}
+    { id:6, 
+      firstName:formValuse.customerFirstName, 
+      lastName:formValuse.customerLastName,
+      phone:formValuse.customerPhone, 
+      add:{
+        state:formValuse.customerState, 
+        city: formValuse.customerCity, 
+        street: formValuse.customerStreet}
+      }
     this.customerService.addCustomer(customer);
   }
 

@@ -10,6 +10,8 @@ import { Location } from '@angular/common';
 })
 export class CustomersComponent implements OnInit {
 
+  searchTxt: string = '';
+
   customers: Customer[] = [];
   selectedCustomer: Customer;
   
@@ -22,6 +24,7 @@ export class CustomersComponent implements OnInit {
 
   ngOnInit(): void {
     this.customers = this.customerService.getCustomers()
+    console.log(this.customers.length)
   }
 
   addCustomer(customer){

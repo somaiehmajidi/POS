@@ -23,7 +23,12 @@ export class CustomerService {
     }
 
     addCustomer(
-        newCustomer:{id: number, name: string, phone: string, add?:{state,city,street}}
+        newCustomer:{id: number, 
+            firstName: string,
+            lastName: string, 
+            phone: string, 
+            add?:{state,city,street}},
+            location?:{latitude, longitude}
     ){
         CUSTOMERS.push(newCustomer)
     }
@@ -33,7 +38,7 @@ export class CustomerService {
     }
 
     editCustomer(customer){
-        const result = CUSTOMERS.find(user => user.name === customer.name)
+        const result = CUSTOMERS.find(user => user.id === customer.id)
         let index = CUSTOMERS.indexOf(result);
     
         customer.id = CUSTOMERS[index].id;
@@ -45,52 +50,77 @@ export class CustomerService {
 const CUSTOMERS:Customer[] = [
     {
         id: 1,
-        name: 'سهیل حسن خانی',
-        phone: '0912202224',
+        firstName: 'سهیل',
+        lastName: 'حسن خانی',
+        phone: '۰۹۳۸۴۴۵۵۶۶۷',
         add: {
             state: 'تهران',
             city: 'تهران',
             street: 'سعادت آباد'
+        },
+        location: {
+            latitude: '35.785731',
+            longitude: '51.380563'
         }
     },
     {
         id: 2,
-        name: 'ندا مجیدی',
-        phone: '0912303334',
+        firstName: 'ندا',
+        lastName: 'مجیدی',
+        phone: '۰۹۱۲۱۲۱۳۱۴۵',
         add: {
             state: 'تهران',
             city: 'تهران',
             street: 'جلفا'
+        },
+        location: {
+            latitude: '35.785731',
+            longitude: '51.380563'
         }
     },
     {
         id: 3,
-        name: 'سمیه مجیدی',
-        phone: '0912404445',
+        firstName: 'سمیه',
+        lastName: 'مجیدی',
+        phone: '۰۹۱۲۲۰۲۴۴۵',
         add: {
             state: 'تهران',
             city: 'تهران',
             street: 'نوبنیاد'
+        },
+        location: {
+            latitude: '35.785731',
+            longitude: '51.380563'
         }
     },
     {
-        id: 1,
-        name: 'سهیل حسن خانی',
-        phone: '0912202224',
+        id: 4,
+        firstName: 'سهیل',
+        lastName: 'حسن خانی',
+        phone: '۰۹۱۲۲۰۲۲۲۴',
         add: {
             state: 'تهران',
             city: 'تهران',
             street: 'سعادت آباد'
+        },
+        location: {
+            latitude: '35.785731',
+            longitude: '51.380563'
         }
     },
     {
-        id: 2,
-        name: 'ندا مجیدی',
-        phone: '0912303334',
+        id: 5,
+        firstName: 'ندا',
+        lastName: 'مجیدی',
+        phone: '۰۹۱۲۳۰۳۳۳۴',
         add: {
             state: 'تهران',
             city: 'تهران',
             street: 'جلفا'
+        },
+        location: {
+            latitude: '35.785731',
+            longitude: '51.380563'
         }
     }
 ]

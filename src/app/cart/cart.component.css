@@ -1,7 +1,7 @@
 .cart-side{
     position: fixed;
-    width: 30%;
-    max-width: 30%;
+    width: 35%;
+    max-width: 35%;
     top: 0;
     left: 0;
     bottom: 0;
@@ -16,7 +16,7 @@
     top:0;
     width: 100%;
     bottom: 260px;
-    overflow: scroll;
+    overflow: auto;
 }
 .customer{
     box-sizing: border-box;
@@ -64,7 +64,7 @@
 .cart-placeHolder{
     margin-top: 55px; 
     /* height: 350px; */
-    overflow: scroll;
+    overflow: auto;
 }
 .cart-customer{
     padding: 0; 

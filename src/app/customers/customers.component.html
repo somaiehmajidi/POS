@@ -12,7 +12,8 @@
                 <input type="text" 
                 placeholder="جستجوی مشتریان" 
                 class="text-right p-2 border-0 w-75"
-                #searchCustomer> 
+                #searchCustomer
+                [(ngModel)]="searchTxt"> 
             </div>
         </div>
         <div class="col-lg-4 text-left">
@@ -35,7 +36,7 @@
                         <i class="fa fa-user-circle" style="font-size: 5rem;"></i>
                     </div>
                     <div class="col-lg-6">
-                        <h6>{{selectedCustomer.name}}</h6>
+                        <h6>{{selectedCustomer.firstName}} {{selectedCustomer.lastName}}</h6>
                         <h6>{{selectedCustomer.phone}}</h6>
                         <p>{{selectedCustomer.add.state}}، 
                             {{selectedCustomer.add.city}}، 
@@ -48,24 +49,31 @@
                     </div>
                 </div>
             </div>
-            <table class="table text-right table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>نام</th>
-                        <th>آدرس</th>
-                        <th>شماره تماس</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let customer of customers" 
-                    (click)="selectCustomer(customer)" 
-                    [class.active]="customer === selectedCustomer">
-                        <th>{{customer.name}}</th>
-                        <th>{{customer.add.state}}، {{customer.add.city}}، {{customer.add.street}}</th>
-                        <th>{{customer.phone}}</th>
-                    </tr>
-                </tbody>
-            </table>
+            <div *ngIf="customers as result">
+                <div *ngIf="result.length === 0">
+                    no customer!
+                </div>
+                <div *ngIf="result.length > 0">
+                    <table class="table text-right table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>نام</th>
+                                <th>آدرس</th>
+                                <th>شماره تماس</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let customer of result | search: searchTxt" 
+                            (click)="selectCustomer(customer)" 
+                            [class.active]="customer === selectedCustomer">
+                                <th>{{customer.firstName}} {{customer.lastName}}</th>
+                                <th>{{customer.add.state}}، {{customer.add.city}}، {{customer.add.street}}</th>
+                                <th>{{customer.phone}}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -23,6 +23,7 @@ export class ProductsComponent implements OnInit {
   categories: Category[] = [];
 
   searchTxt: string = '';
+  searchCat: string = '';
 
   constructor(private productService: ProductService,
               //private dataService: DataService,
@@ -48,7 +49,7 @@ export class ProductsComponent implements OnInit {
     });
   }
   getCategory(category){
-    this.searchTxt = category;
+    this.searchCat = category;
   }
 
 }
