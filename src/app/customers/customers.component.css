@@ -34,3 +34,19 @@ button span{
     background-color: #007bff !important;
     color: white;
 }
+.zoomIn,
+.zoomOut{
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    top:60px;
+    right:24px;
+    background-color: white;
+    border: 1px solid #ccc;
+    font-size: 32px;
+    line-height: 32px;
+    border-radius: 3px;
+}
+.zoomOut{
+    top: 110px;
+}

@@ -24,6 +24,8 @@ import { MainComponent } from './main/main.component';
 import { AddCustomerComponent } from './customers/add-customer/add-customer.component';
 import { EditCustomerComponent } from './customers/edit-customer/edit-customer.component';
 
+import { GoogleMapsModule } from '@angular/google-maps';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +48,7 @@ import { EditCustomerComponent } from './customers/edit-customer/edit-customer.c
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    GoogleMapsModule,
     FormsModule,
     NoopAnimationsModule,
     MatDialogModule,

@@ -7,6 +7,14 @@ import { Customer } from '../shared/invoice.model';
 
 export class CustomerService {
 
+    options: google.maps.MapOptions ={ 
+        mapTypeId: 'roadmap',
+        zoomControl: false,
+        scrollwheel: false,
+        disableDoubleClickZoom: true,
+        maxZoom: 15,
+        minZoom: 8
+    }
     customers: Customer[] = [];
     selectedCustomer: Customer;
 
@@ -22,14 +30,7 @@ export class CustomerService {
         this.selectCustomer = customer;
     }
 
-    addCustomer(
-        newCustomer:{id: number, 
-            firstName: string,
-            lastName: string, 
-            phone: string, 
-            add?:{state,city,street}},
-            location?:{latitude, longitude}
-    ){
+    addCustomer(newCustomer:Customer){
         CUSTOMERS.push(newCustomer)
     }
 
@@ -59,8 +60,8 @@ const CUSTOMERS:Customer[] = [
             street: 'سعادت آباد'
         },
         location: {
-            latitude: '35.785731',
-            longitude: '51.380563'
+            latitude: 35.785731,
+            longitude: 51.380563
         }
     },
     {
@@ -74,8 +75,8 @@ const CUSTOMERS:Customer[] = [
             street: 'جلفا'
         },
         location: {
-            latitude: '35.785731',
-            longitude: '51.380563'
+            latitude: 35.748860,
+            longitude: 51.444041
         }
     },
     {
@@ -89,8 +90,8 @@ const CUSTOMERS:Customer[] = [
             street: 'نوبنیاد'
         },
         location: {
-            latitude: '35.785731',
-            longitude: '51.380563'
+            latitude: 35.791519,
+            longitude: 51.477694
         }
     },
     {
@@ -104,8 +105,8 @@ const CUSTOMERS:Customer[] = [
             street: 'سعادت آباد'
         },
         location: {
-            latitude: '35.785731',
-            longitude: '51.380563'
+            latitude: 35.785731,
+            longitude: 51.380563
         }
     },
     {
@@ -119,8 +120,8 @@ const CUSTOMERS:Customer[] = [
             street: 'جلفا'
         },
         location: {
-            latitude: '35.785731',
-            longitude: '51.380563'
+            latitude: 35.748860,
+            longitude: 51.444041
         }
     }
 ]

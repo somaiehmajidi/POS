@@ -12,13 +12,31 @@ export class EditCustomerComponent implements OnInit {
   @Input() data:Customer;
   @Output() eventClick = new EventEmitter()
 
-  customerName;customerPhone;customerState;customerCity;customerStreet;
+ 
+
+  customerName;customerPhone;customerState;customerCity;customerStreet; customerLocation;
 
   constructor(private customerService: CustomerService) { }
 
+  options = this.customerService.options;
+  center: google.maps.LatLngLiteral;
+  markerPosition: google.maps.LatLngLiteral;
+  zoom = 13;
+
   ngOnInit(): void {
-    
+    let lat = this.data.location.latitude
+    let lng = this.data.location.longitude
+
+    this.center = {
+      lat: lat,
+      lng: lng
+    }
+    this.markerPosition = {lat, lng}
   }
+  
+  
+  
+  // markerPosition: google.maps.LatLngLiteral;
 
   editCustomer(formValuse){
     let customer:{firstName, lastName, phone, add:{state, city, street} }

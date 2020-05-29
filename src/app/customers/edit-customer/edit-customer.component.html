@@ -2,9 +2,11 @@
     <form autocomplete="off" #newForm="ngForm" novalidate (ngSubmit)="editCustomer(newForm.value)">
         <div class="row">
             <div class="col-lg-6">
-                <div class="form-group">
-                    Uploding profile image!
-                </div>
+                <!--<div class="form-group">
+                    <div>
+                        <img class="profile-img" src="http://placehold.it/128x128" >
+                    </div> 
+                </div>-->
                 <div class="row form-group">
                     <div class="col-md-2"><label for="firstName">نام</label></div>
                     <div class="col-md-10">
@@ -14,7 +16,7 @@
                     </div>
                 </div>
                 <div class="row form-group">
-                    <div class="col-md-2"><label for="lastName">نام</label></div>
+                    <div class="col-md-2"><label for="lastName">نام خانوادگی</label></div>
                     <div class="col-md-10">
                         <input id="lastName" name="customerLatsName" class="form-control"
                         placeholder="نام خانوادگی..."
@@ -60,17 +62,34 @@
                 </div>
             </div>
         </div>
-        <div class="text-left">
-            <span class="btn-placeholder">
-                <button class="btn-sm btn-outline-secondary" 
-                type="button"
-                (click)="onCencel()">لغو</button>
-            </span>
-            <span class="btn-placeholder">
-                <button class="btn-sm btn-outline-primary" 
-                type="submit"
-                [disabled]="newForm.invalid" >ویرایش اطلاعات</button>
-            </span>
+        <div class="row">
+            <div class="col-lg-12">
+                <google-map
+                width="100%"
+                height="250px"
+                [zoom]="zoom"
+                [center]="center">
+                    <map-marker 
+                    markerDraggble = "true"
+                    [position] = "markerPosition"></map-marker>
+                </google-map>
+            </div>
+        </div>
+        <div class="row" style="margin-top:10px">
+            <div class="col-lg-12">
+                <div class="text-left">
+                    <span class="btn-placeholder">
+                        <button class="btn-sm btn-outline-secondary" 
+                        type="button"
+                        (click)="onCencel()">لغو</button>
+                    </span>
+                    <span class="btn-placeholder">
+                        <button class="btn-sm btn-outline-primary" 
+                        type="submit"
+                        [disabled]="newForm.invalid" >ویرایش اطلاعات</button>
+                    </span>
+                </div>
+            </div>
         </div>
     </form>
 </div> 

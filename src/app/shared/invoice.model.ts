@@ -28,8 +28,8 @@ export interface Customer{
         postcode?: number
     }
     location?: {
-        latitude: string
-        longitude: string
+        latitude: number
+        longitude: number
     }
     imageUrl?: string
 }

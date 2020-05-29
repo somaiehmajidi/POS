@@ -47,6 +47,22 @@
                          | 
                         <button class="btn-sm btn-primary" (click)=setCustomer(selectedCustomer)>انتخاب مشتری</button>
                     </div>
+                </div>  
+                <div class="row">
+                    <div class="col-lg-12">
+                        <google-map 
+                        width="100%" 
+                        height="250px"
+                        [zoom]="zoom"
+                        [center]="center"
+                        [options]="options">
+                            <map-marker
+                            [position] = "markerPosition"></map-marker>
+                            <map-info-window>Info Window</map-info-window>
+                        </google-map>
+                        <button class="zoomIn"  (click)="zoomIn()">+</button>
+                        <button class="zoomOut" (click)="zoomOut()">-</button>
+                    </div>    
                 </div>
             </div>
             <div *ngIf="customers as result">
