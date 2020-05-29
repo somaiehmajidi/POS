@@ -4,6 +4,17 @@
     </div> -->
     <table class="calculator-operator table table-bordered">
         <tr>
+            <td style="text-align: center;"> 
+                <div class="customer">
+                    <div (click)="addCustomer()" class="cart-customer">
+                        <!-- <div class="pull-right"><i class="fa fa-user-circle"></i></div> -->
+                        <div *ngIf="!assignedCustomer">انتخاب مشتری</div>
+                        <div *ngIf="assignedCustomer">
+                            {{assignedCustomer.firstName}} {{assignedCustomer.lastName}}
+                        </div>
+                    </div>
+                </div>
+            </td>
             <td><button type="button" (click) = "getNumber('1')" value="1">1</button></td>
             <td><button type="button" (click) = "getNumber('2')" value="2">2</button></td>
             <td><button type="button" (click) = "getNumber('3')" value="3">3</button></td>
@@ -16,6 +27,9 @@
             </td>
         </tr>
         <tr>
+            <td rowspan="3" style="text-align: center;">
+                پرداخت
+            </td>
             <td>
                 <button type="button" (click) = "getNumber('4')" value="4">4</button>
             </td>
@@ -63,8 +77,4 @@
         </tr>
         <!-- <button type="button" (click) = "getOperand('=')" class="equal-sign" value="=">=</button> -->
     </table>
-    <div>
-        <div>custmer</div>
-        <div>payment</div>
-    </div>
-    </div>
+</div>

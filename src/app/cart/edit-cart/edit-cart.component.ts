@@ -25,7 +25,7 @@ export class EditCartComponent implements OnInit {
   isActive = false; 
   
   constructor(private cart: CartService) {
-   }
+  }
 
   ngOnInit(): void {
   }
@@ -105,6 +105,5 @@ export class EditCartComponent implements OnInit {
   public remove(){
     this.cart.onRemove(this.data);
   }
-
 
 }
