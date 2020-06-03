@@ -36,7 +36,8 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(product){
-    this.cartService.addToCart(product);
+    //this.cartService.addToCart(product);
+    this.cartService.add(product);
   }
 
   clearSearch(){

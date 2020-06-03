@@ -1,14 +1,13 @@
 export interface Invoice{
-    iId: number
+    id: number
     date: Date
     amount: number
     paymentAmount: number
-    discount?: number
     orders: Order[]
-    customer?: Customer[]
+    customers?: Customer[]
 }
 export interface Order{
-    oId: number
+    id: number
     name: string
     price: number 
     totalPrice: number

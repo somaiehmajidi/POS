@@ -1,0 +1,63 @@
+.navbar{ 
+    padding-bottom: 0px !important ;
+}
+.session{
+    background-color: #595959;
+    color:#ccc;
+}
+    .session .id{
+        background-color: transparent;    
+    }
+    .session .date{
+        display: none;
+        margin-left: 5px;
+    }
+    .selected .session{
+        background-color: #ccc;
+    }
+    .selected .id{
+        background-color: #343a40;
+        color: white;
+        padding:2px 8px 0px 8px; 
+    }
+    .selected .date{
+        display: inline-block;
+        color: #343a40;
+    }
+.header-wrap{
+    width: 34.5%;
+}
+.headre-tabs{
+    width: 65.5%;
+    font-size: 14px;
+    overflow-y: hidden;
+}
+.headre-tabs ul{
+    float: left;
+}
+.headre-tabs ul li{
+    display: block;
+    float: left;
+    margin-right: 3px;
+}
+.headre-tabs a{
+    display: block;
+    line-height: 50px;
+    padding: 0px 15px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+.headre-tabs a:hover,
+.headre-tabs a:focus{
+    cursor: pointer;
+}
+.headre-tabs .btn{
+    background-color: #595959;
+    border: none;
+    border-radius: 0%;
+    font-size: 24px !important;
+    margin-right: 3px;
+    width: 40px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}

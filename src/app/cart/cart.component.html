@@ -1,53 +1,53 @@
 <div class="cart-side" style="background-color: #fff">
     <div class="cart">
-            <div class="container cart-placeHolder">
-                <div class="row" *ngIf = "orders.length === 0">
-                    <div class="col-md-12 empty-cart">
-                        <i class="fa fa-shopping-cart"></i>
-                        <p>سبد خرید شما خالی است!</p>
-                    </div>
+        <div class="container cart-placeHolder">
+            <!-- <div class="text-left">invoice id:  {{selectedInvoice.id}}</div> -->
+            <div class="row" 
+            *ngIf = "selectedInvoice.orders.length === 0; else cartHolder">
+                <div class="col-md-12 empty-cart">
+                    <i class="fa fa-shopping-cart"></i>
+                    <p>سبد خرید شما خالی است!</p>
                 </div>
-                <div *ngFor = "let invoice of invoices">
-                <!-- [ngClass]="{ 'selectedItem' : isLast }"> -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="cart-item" 
-                                *ngFor = "let order of orders; let last=last" 
-                                (click)="onSelect(order)"
-                                [ngClass]="{selectedItem: order == selectedItem }">
-                                <!-- [ngClass]="{'selectedItem': last || order == selectedItem}" -->
-                                <div class="clearfix">
-                                    <div class="float-right">{{order.name}}</div>
-                                    <div class="float-left font-weight-bold">
-                                        {{order.totalPrice | number:'1.0'}}
-                                    </div>
-                                </div>
-                                <div class="item-detail">
-                                    <span>تعداد:</span> {{order.unit}}
-                                    /
-                                    <span>قیمت واحد:</span> {{order.price | number:'1.0'}}
-                                </div>
-                                <div *ngIf="order.discount">
-                                    <span>تخفیف:</span>{{order.discount}}%
-                                </div>
+            </div>
+            <ng-template #cartHolder class="row">
+            <div class="row">    
+                <div class="col-md-12">
+                    <div class="cart-item" 
+                    *ngFor = "let order of selectedInvoice.orders" 
+                    (click)="onSelect(order)"
+                    [class.selected]= "order === selectedOrder">
+                    <!-- [ngClass]="{selectedItem: order == selectedItem }" -->
+                        <div class="clearfix">
+                            <div class="float-right">{{order.name}}</div>
+                            <div class="float-left font-weight-bold">
+                                {{order.totalPrice | number:'1.0'}}
                             </div>
                         </div>
-                    </div>
-                    <div class="row" *ngIf = "orders.length > 0">
-                        <div class="col-md-12">
-                            <div class="total">
-                                <span>جمع کل: </span>
-                                <span>{{total | number:'1.0'}}</span>
-                                <!-- <span>{{invoice.amount | number:'1.0'}}</span> -->
-                            </div>
-                            <div class="tax">
-                                <span>مالیات: </span>
-                                <span>0</span>
-                            </div>
+                        <div class="item-detail">
+                            <span>تعداد:</span> {{order.unit}}
+                            /
+                            <span>قیمت واحد:</span> {{order.price | number:'1.0'}}
+                        </div>
+                        <div *ngIf="order.discount">
+                            <span>تخفیف:</span>{{order.discount}}%
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="total">
+                        <span>جمع کل: </span>
+                        <span>{{selectedInvoice.amount | number:'1.0'}}</span>
+                    </div>
+                    <div class="tax">
+                        <span>مالیات: </span>
+                        <span>0</span>
+                    </div>
+                </div>
+            </div>
+            </ng-template>
+        </div>
     </div>
     <div class="customer">
         <div (click)="addCustomer()" class="cart-customer">
@@ -60,3 +60,4 @@
     </div>
     <app-edit-cart [data]="selectedItem"></app-edit-cart>
 </div>
+

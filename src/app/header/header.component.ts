@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Invoice } from '../shared/invoice.model';
+import { CartService } from '../shared/cart.service';
 
 
 @Component({
@@ -7,8 +9,38 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor() { }
+
+  invoices: Invoice[] = this.cart.invoices;
+  selectedInvoice;
+  
+  constructor(private cart: CartService) { }
 
   ngOnInit(): void {
+    let invoice: Invoice = { 
+      id: 1,
+      date: new Date(),
+      amount: 0,
+      paymentAmount: 0,
+      orders: [],
+      customers: []
+    }
+    this.cart.invoices.push(invoice);
+    this.cart.selectedInvoice = invoice;
+    this.selectedInvoice = this.cart.selectedInvoice;
+  }
+
+  addSession(){
+    this.cart.addInvoice();
+    this.selectedInvoice = this.cart.selectedInvoice;
+  }
+
+  removeSession(selectedInvoice){
+    this.cart.removeInvoice(selectedInvoice);
+    this.selectedInvoice = this.cart.selectedInvoice;
+  }
+
+  onClick(invoice){
+    this.selectedInvoice = invoice;
+    this.cart.selectedInvoice = invoice;
   }
 }

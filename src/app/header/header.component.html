@@ -1,10 +1,21 @@
 <nav class="navbar fixed-top navbar-dark bg-dark">
+    <div class="header-wrap">
       <a class="navbar-brand" href="#">Point Of Sale</a>
-      <div class="navbar-nav flex-row">
-        <a class="nav-item p-2">
-          <button type="button" class="close" aria-label="Close" style="color:white">
-            <span aria-hidden="true" style="color:white">&times;</span>
-          </button>
-        </a>
+    </div>
+    <div class="headre-tabs">
+      <ul>
+        <li *ngFor="let invoice of invoices; let last = isLast" 
+            [class.selected]="invoice === selectedInvoice"
+            (click)="onClick(invoice)">
+          <a class="session">
+            <span class="id rounded-circle">{{invoice.id}}</span>
+            <span class="date">{{invoice.date | date: 'H:mm' }}</span>
+          </a>
+        </li>
+      </ul>
+      <div class="d-inline-flex">
+        <button class="btn btn-dark" (click)="addSession()">+</button>
+        <button class="btn btn-dark" (click)="removeSession(selectedInvoice)">-</button>
       </div>
+    </div>
 </nav>

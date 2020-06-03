@@ -61,6 +61,9 @@
 .selectedItem{
     background-color: #eee;
 }
+.selected{
+    color: red;
+}
 .cart-placeHolder{
     margin-top: 55px; 
     /* height: 350px; */

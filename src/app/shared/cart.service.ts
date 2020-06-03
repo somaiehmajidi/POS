@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-//import { Order } from '../interfaces/Order';
 import { Invoice, Order } from '../shared/invoice.model'
-import { isNgTemplate } from '@angular/compiler';
 
 @Injectable({
     providedIn: 'root'  
@@ -11,7 +9,6 @@ export class CartService {
 
     invoices: Invoice[] = [];
     orders: Order[] = [];
-    selectedItem;
 
     currentNumber = '0';
     operator = null;
@@ -23,41 +20,75 @@ export class CartService {
     discount = '0';
 
     isActive = false;
+    selectedInvoice;
+    selectedOrder;
 
-    public addToCart(product){
-        if (this.invoices){
-            let order = this.orders.find(x => x.name === product.name)
-            if (order){
-                order.unit ++;
-                order.totalPrice += order.price;
-            }
-            else{
-                let id = this.orders.length;
-                this.orders.push(
-                    {oId: id, name: product.name, price: product.price, totalPrice: product.price, unit: 1}
-                )
-            }
-            let sum = this.orders.reduce(function (accumulator, order){
-                return accumulator + order.totalPrice
-            },0)
-            let iId = 1, date = new Date(), amount = sum, paymentAmount = sum, orders = this.orders;
-            const invoice = {iId, date, amount, paymentAmount, orders}
-            let item = this.invoices.find(x => x.iId === invoice.iId)
-            if (item){
-                item.amount = sum;
-                item.paymentAmount = sum;
-            }
-            else{
-                this.invoices.push(invoice)
-            }    
+    public add(product){
+      let invoiceId = this.selectedInvoice.id;
+      
+      this.orders = this.invoices[invoiceId-1].orders;
+      let id = this.orders.length;
+      
+      let order = this.orders.find(x => x.name === product.name);      
+      
+      if (order){
+        order.unit++;
+        order.totalPrice += order.price;
+      }
+      else{
+        let newOrder: Order = {
+          id: id++,
+          name: product.name,
+          price: product.price, 
+          totalPrice: product.price,
+          unit: 1
         }
-        else{
-            alert ('new session')
-        }   
+        this.orders.push(newOrder)
+        this.selectedOrder = newOrder;
+      }
+      
+      let sum = this.orders.reduce(function (accumulator, order){
+        return accumulator + order.totalPrice
+      },0)
+      this.invoices[invoiceId-1].amount = sum;
+      this.invoices[invoiceId-1].paymentAmount = sum;
     }
 
+
+    // public addToCart(product){
+    //     if (this.invoices){
+    //         let order = this.orders.find(x => x.name === product.name)
+    //         if (order){
+    //             order.unit ++;
+    //             order.totalPrice += order.price;
+    //         }
+    //         else{
+    //             let id = this.orders.length;
+    //             this.orders.push(
+    //                 {id: id, name: product.name, price: product.price, totalPrice: product.price, unit: 1}
+    //             )
+    //         }
+    //         let sum = this.orders.reduce(function (accumulator, order){
+    //             return accumulator + order.totalPrice
+    //         },0)
+    //         let id = 1, date = new Date(), amount = sum, paymentAmount = sum, orders = this.orders;
+    //         const invoice = {id, date, amount, paymentAmount, orders}
+    //         let item = this.invoices.find(x => x.id === invoice.id)
+    //         if (item){
+    //             item.amount = sum;
+    //             item.paymentAmount = sum;
+    //         }
+    //         else{
+    //             this.invoices.push(invoice)
+    //         }    
+    //     }
+    //     else{
+    //         alert ('new session')
+    //     }   
+    // }
+
     onSelect(order: Order): void{
-        this.selectedItem = order;
+        this.selectedOrder = order;
     }
 
     onRemove(order: Order):void{
@@ -68,8 +99,8 @@ export class CartService {
     }
      
    //edit cart functions
-   public getNumber(v: string){
-    const data:any = this.selectedItem;
+    getNumber(v: string){
+    const data:any = this.selectedOrder;
     if(this.waitForSecondNumber)
     {
       this.currentNumber = v;
@@ -80,8 +111,8 @@ export class CartService {
     if (this.operator !== null){
       if (this.operator === 'qty'){
 
-        this.selectedItem.unit = Number(this.currentNumber)
-        data.totalPrice = (data.unit*this.selectedItem.price) 
+        this.selectedOrder.unit = Number(this.currentNumber)
+        data.totalPrice = (data.unit*this.selectedOrder.price) 
 
       }else if (this.operator === 'disc'){
         
@@ -132,6 +163,37 @@ export class CartService {
         this.currentNumber = '0'
         break
     }
+  }
+
+   //Invoice functions
+  addInvoice(){
+    let id: any;
+    if(this.invoices.length === 1){
+      id = 2;
+    }
+    else{
+      id = this.invoices.slice(-1)[0].id
+      id++
+    }
+    let invoice: Invoice = { 
+      id: id,
+      date: new Date(),
+      amount: 0,
+      paymentAmount: 0,
+      orders: [],
+      customers: []
+    }
+    this.invoices.push(invoice);
+    this.selectedInvoice = invoice;
+  }
+
+  removeInvoice(invoice){
+    const index = this.invoices.indexOf(invoice);
+    if(index !== 0){
+      this.invoices.splice(index, 1)
+    }
+    //console.log()
+    this.selectedInvoice = this.invoices[this.invoices.length-1];
   }
 
 
