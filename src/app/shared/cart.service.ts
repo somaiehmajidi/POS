@@ -196,5 +196,13 @@ export class CartService {
     this.selectedInvoice = this.invoices[this.invoices.length-1];
   }
 
+  selectInvoice(invoice){
+    this.selectedInvoice = invoice;
+    if (invoice.orders.lenght !== 0){
+      let array = this.selectedInvoice.orders;
+      this.selectedOrder = array[array.length-1];
+    }
+  }
+
 
 }

@@ -41,6 +41,6 @@ export class HeaderComponent implements OnInit {
 
   onClick(invoice){
     this.selectedInvoice = invoice;
-    this.cart.selectedInvoice = invoice;
+    this.cart.selectInvoice(invoice);
   }
 }
