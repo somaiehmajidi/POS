@@ -1,7 +1,6 @@
 <div class="cart-side" style="background-color: #fff">
     <div class="cart">
         <div class="container cart-placeHolder">
-            <!-- <div class="text-left">invoice id:  {{selectedInvoice.id}}</div> -->
             <div class="row" 
             *ngIf = "selectedInvoice.orders.length === 0; else cartHolder">
                 <div class="col-md-12 empty-cart">
@@ -49,15 +48,27 @@
             </ng-template>
         </div>
     </div>
-    <div class="customer">
-        <div (click)="addCustomer()" class="cart-customer">
-            <div class="pull-right"><i class="fa fa-user-circle"></i></div>
-            <div class="name pull-right" *ngIf="!assignedCustomer">انتخاب مشتری</div>
-            <div class="name pull-right" *ngIf="assignedCustomer">
-                {{assignedCustomer.firstName}} {{assignedCustomer.lastName}}
-            </div>
-        </div>
+    <!-- edit cart options -->
+    <div class="edit-card">
+        <table class="table table-bordered">
+            <tr>
+                <td width="35%">
+                    <div class="customer">
+                        <div (click)="addCustomer()" class="cart-customer">
+                            <span><i class="fa fa-user-circle"></i></span>
+                            <span *ngIf="!assignedCustomer">انتخاب مشتری</span>
+                            <span *ngIf="assignedCustomer">
+                                {{assignedCustomer.firstName}} {{assignedCustomer.lastName}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="payment">
+                        payment!
+                    </div>
+                </td>
+                <td width="65%"><app-edit-cart [data]="selectedOrder"></app-edit-cart></td>
+            </tr>
+        </table>
     </div>
-    <app-edit-cart [data]="selectedItem"></app-edit-cart>
 </div>
 

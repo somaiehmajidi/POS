@@ -1,14 +1,3 @@
-.edit-card{
-    box-sizing: border-box;
-    padding:5%;
-    border-top: 1px solid #ccc;
-    width: 100%;
-    height: 200px;
-    position: absolute;
-    bottom: 0;
-    left:0;
-    background-color:white;
-}
 button{
     display: block;
     width: 100%;
@@ -25,4 +14,10 @@ button{
     }
 table tr td{
     padding: 0;
+}
+table{
+    margin-bottom: 0px !important;
+}
+table td{
+    width: 25%;
 }
