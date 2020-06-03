@@ -192,8 +192,10 @@ export class CartService {
     if(index !== 0){
       this.invoices.splice(index, 1)
     }
-    //console.log()
+    //selected Invoice & selected Order:
     this.selectedInvoice = this.invoices[this.invoices.length-1];
+    let array = this.selectedInvoice.orders;
+    this.selectedOrder = array[array.length-1];
   }
 
   selectInvoice(invoice){
