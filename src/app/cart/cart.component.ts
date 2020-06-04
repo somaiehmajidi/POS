@@ -50,4 +50,8 @@ export class CartComponent implements OnInit {
     this.selectedOrder = this.cartService.selectedOrder;
   }
 
+  pay(){
+    this.router.navigate(['payment']);
+  }
+
 }

@@ -19,7 +19,7 @@ import { FilterPipe } from './products/filter.pipe';
 import { SearchPipe } from './shared/search.pipe';
 import { EditCartComponent } from './cart/edit-cart/edit-cart.component';
 import { CustomersComponent } from './customers/customers.component';
-import { PaymentComponent } from './cart/payment/payment.component';
+import { PaymentComponent } from './payment/payment.component';
 import { MainComponent } from './main/main.component';
 import { AddCustomerComponent } from './customers/add-customer/add-customer.component';
 import { EditCustomerComponent } from './customers/edit-customer/edit-customer.component';

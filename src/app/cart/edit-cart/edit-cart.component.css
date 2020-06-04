@@ -9,14 +9,18 @@ button{
     font-weight: bold;
 }
     button.active{
-        background-color: #007bff;
+        background-color: #0075c4;
         color: white;
+    }
+    button:hover{
+        background-color: #f3f3f3;
     }
 table tr td{
     padding: 0;
 }
 table{
     margin-bottom: 0px !important;
+    
 }
 table td{
     width: 25%;
