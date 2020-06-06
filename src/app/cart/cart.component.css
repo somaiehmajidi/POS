@@ -54,15 +54,14 @@
     margin-top: 55px; 
     overflow: auto;
 }
-.cart-customer{
-    padding: 0; 
-    width: 80%;
-    margin: auto;
+.customer{
+    padding:12px 0px 11px ;
+    text-align: center;
 }
-    .cart-customer:hover,
-    .cart-customer:focus{
-        cursor: pointer;
-    }
+.cart-customer:hover,
+.cart-customer:focus{
+    cursor: pointer;
+}
     .fa-user-circle{
         font-size: 2rem;
         color: #888;     
@@ -87,10 +86,14 @@
     border-top: 1px solid #ccc;
     text-align: center;
     font-size: 16px;
-    padding: 10px 0px;
+    padding: 5px 0px 5px;
 }
 .payment:hover{
     cursor: pointer;
+}
+.payment i{
+    font-size: 2.2rem;
+    color: #888;
 }
 /* .edit-card table{
    

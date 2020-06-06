@@ -14,11 +14,60 @@
             </button> 
         </div>
     </div>
-    <div class="row border" style="padding-top: 1rem; padding-bottom: 1rem;">
-        <div class="col-md-4">
+    <div class="row border">
+        <div class="col-md-2 placeHolder">
+            <div *ngFor="let type of paymentTypes"
+            class="payment-methods"
+            (click)="addPaymentLine(type)">
+                <span>{{type}}</span>
+            </div>
+            <div class="payment-methods disabled"><span>کارت هدیه</span></div>
+            <div class="payment-methods disabled"><span>چک</span></div>
+        </div>
+        <div class="col-md-7 border-right border-left">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="payment-lines">
+                        <span>{{invoice.paymentAmount | number:'1.0'}}</span>
+                        <span>تومان</span>
+                        <div>لطفا یک روش پرداخت را انتخاب کنید!</div>
+                    </div>
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <td>مبلغ</td>
+                                <td>دربافتی</td>
+                                <td>باقیمانده</td>
+                                <td>روش پرداخت</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor = "let line of payment"
+                            class="line"
+                            [class.selected]="line === selectedLine"
+                            (click)="selectLine(line)">
+                                <td>{{line.due | number:'1.0'}}</td>
+                                <td><input type="text" [(ngModel)]="line.tendered"></td>
+                                <td>{{line.change}}</td>
+                                <td>{{line.type}}</td>
+                                <td (click)="removePaymentLine(line)">
+                                    <i class="fa fa-times-circle"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 placeHolder">
             <div class="payment-method">
                 <span><i class="fa fa-user-o"></i></span>
-                <span>انتخاب مشتری</span>
+                <span *ngIf="!customer"
+                (click)="addCustomer()">انتخاب مشتری</span>
+                <span *ngIf="customer">
+                    {{customer.firstName}} {{customer.lastName}}
+                </span>
             </div>
             <div class="payment-method">
                 <span><i class="fa fa-at"></i></span>
@@ -27,23 +76,6 @@
             <div class="payment-method active">
                 <span><i class="fa fa-envelope-o"></i></span>
                 <span>ارسال پیامک</span>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="payment-lines">
-                        <span>{{invoice.paymentAmount | number:'1.0'}}</span>
-                        <span>تومان</span>
-                        <div>لطفا یک روش پرداخت را انتخاب کنید!</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center payment-methods">
-                    <button class="btn btn-primary">پرداخت نقد</button> 
-                    <button class="btn btn-primary">کارت</button>
-                    <button class="btn btn-primary">چک</button>
             </div>
         </div>
     </div>

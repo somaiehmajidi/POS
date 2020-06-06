@@ -15,7 +15,7 @@ button span{
     padding: 1rem;
     background-color: #cfcfcf;
     font-size: 14px;
-    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 .payment-method:hover{
     background-color: #ccc;
@@ -55,4 +55,30 @@ button span{
     font-size: 32px;
     color: #0075c4;
     text-shadow: 2px 2px 3px #fff;
+}
+.payment-methods{
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 0.5rem;
+    background-color: #cfcfcf;
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+}
+.payment-methods:hover{
+    cursor: pointer;
+}
+.payment-methods.disabled{
+    color: #aaa;
+}
+.placeHolder{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.line{
+    background-color: white;
+    border-top: 1px solid #cfcfcf;
+}
+.line.selected{
+    background-color: #0075c4;
+    color: white;
 }

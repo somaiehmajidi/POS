@@ -30,6 +30,7 @@ export class CartComponent implements OnInit {
     
     if (this.customerService.selectedCustomer){
       this.assignedCustomer = this.customerService.selectedCustomer;
+      this.selectedInvoice.customers.push(this.assignedCustomer)
     }
   }
 

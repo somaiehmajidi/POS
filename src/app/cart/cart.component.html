@@ -55,18 +55,21 @@
                 <td width="35%">
                     <div class="customer">
                         <div (click)="addCustomer()" class="cart-customer">
-                            <span><i class="fa fa-user-circle"></i></span>
+                            <div><i class="fa fa-user-circle"></i></div>
                             <span *ngIf="!assignedCustomer">انتخاب مشتری</span>
                             <span *ngIf="assignedCustomer">
                                 {{assignedCustomer.firstName}} {{assignedCustomer.lastName}}
                             </span>
                         </div>
                     </div>
-                    <div class="payment">
-                        <div (click)="pay()">payment!</div>
+                    <div class="payment" (click)="pay()">
+                        <i class="fa fa-arrow-circle-left"></i>
+                        <div>پرداخت</div>
                     </div>
                 </td>
-                <td width="65%"><app-edit-cart [data]="selectedOrder"></app-edit-cart></td>
+                <td width="65%">
+                    <app-edit-cart [data]="selectedOrder"></app-edit-cart>
+                </td>
             </tr>
         </table>
     </div>

@@ -76,9 +76,12 @@
     .categories i{
         font-size: 24px;
     }
+        .categories i:hover{
+            cursor: pointer;
+        }
     .selectedCat{
         font-size: 14px;
-        padding: 0 15px;
+        padding: 0 25px;
         line-height: 28px;
     }
 .category_bar{
