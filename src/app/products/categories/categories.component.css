@@ -1,0 +1,10 @@
+li{
+    box-sizing: border-box;
+    width: 15%;
+    float: right;
+    padding:10px;
+}
+    li:hover{
+        background-color: #CfCfCf;
+        cursor: pointer;
+    }

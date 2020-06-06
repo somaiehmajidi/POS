@@ -53,4 +53,8 @@ export class ProductsComponent implements OnInit {
     this.searchCat = category;
   }
 
+  removeFilter(){
+    this.searchCat = '';
+  }
+
 }

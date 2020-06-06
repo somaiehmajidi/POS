@@ -16,12 +16,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   filterGroup(category){
-    if (category === 'home'){
-      this.eventClick.emit('');
-    }
-    else{
-      this.eventClick.emit(category.name);
-    }
+    this.eventClick.emit(category.name);
   }
 
 }
