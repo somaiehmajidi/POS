@@ -206,5 +206,9 @@ export class CartService {
     }
   }
 
+  getInvoice(id:number){
+    return this.invoices.find(invoice => invoice.id === id)
+  }
+
 
 }

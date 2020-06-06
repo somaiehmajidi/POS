@@ -1,1 +1,50 @@
-<p>payment works!</p>
+
+<div class="container" style="margin-top: 65px;">
+    <div class="row payment-bar">
+        <div class="col-md-6">
+            <button class="btn-sm btn-primary" (click)="validate()">
+                <span><i class="fa fa-arrow-right"></i></span>
+                <span>فاکتور</span>
+            </button>
+        </div>
+        <div class="col-md-6 text-left">
+            <button class="btn-sm btn-secondary" (click)="goBack()">
+                <span>بازگشت</span>
+                <span><i class="fa fa-arrow-left"></i></span>
+            </button> 
+        </div>
+    </div>
+    <div class="row border" style="padding-top: 1rem; padding-bottom: 1rem;">
+        <div class="col-md-4">
+            <div class="payment-method">
+                <span><i class="fa fa-user-o"></i></span>
+                <span>انتخاب مشتری</span>
+            </div>
+            <div class="payment-method">
+                <span><i class="fa fa-at"></i></span>
+                <span>ارسال ایمیل</span>
+            </div>
+            <div class="payment-method active">
+                <span><i class="fa fa-envelope-o"></i></span>
+                <span>ارسال پیامک</span>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="payment-lines">
+                        <span>{{invoice.paymentAmount | number:'1.0'}}</span>
+                        <span>تومان</span>
+                        <div>لطفا یک روش پرداخت را انتخاب کنید!</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center payment-methods">
+                    <button class="btn btn-primary">پرداخت نقد</button> 
+                    <button class="btn btn-primary">کارت</button>
+                    <button class="btn btn-primary">چک</button>
+            </div>
+        </div>
+    </div>
+</div>

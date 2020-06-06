@@ -85,6 +85,12 @@
 }
 .payment{
     border-top: 1px solid #ccc;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px 0px;
+}
+.payment:hover{
+    cursor: pointer;
 }
 /* .edit-card table{
    
