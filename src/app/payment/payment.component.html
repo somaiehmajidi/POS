@@ -30,33 +30,38 @@
                     <div class="payment-lines">
                         <span>{{invoice.paymentAmount | number:'1.0'}}</span>
                         <span>تومان</span>
-                        <div>لطفا یک روش پرداخت را انتخاب کنید!</div>
+                        <div 
+                        *ngIf = "payment.length === 0; else paymentHolder">
+                        لطفا یک روش پرداخت را انتخاب کنید!</div>
                     </div>
-                    <table class="table table-borderless">
-                        <thead>
-                            <tr>
-                                <td>مبلغ</td>
-                                <td>دربافتی</td>
-                                <td>باقیمانده</td>
-                                <td>روش پرداخت</td>
-                                <td></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor = "let line of payment"
-                            class="line"
-                            [class.selected]="line === selectedLine"
-                            (click)="selectLine(line)">
-                                <td>{{line.due | number:'1.0'}}</td>
-                                <td><input type="text" [(ngModel)]="line.tendered"></td>
-                                <td>{{line.change}}</td>
-                                <td>{{line.type}}</td>
-                                <td (click)="removePaymentLine(line)">
-                                    <i class="fa fa-times-circle"></i>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <ng-template #paymentHolder>
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <td width="25%">مبلغ</td>
+                                    <td width="25%">دربافتی</td>
+                                    <td width="25%">باقیمانده</td>
+                                    <td width="20%">پرداخت</td>
+                                    <td width="5%"></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor = "let line of payment"
+                                class="line"
+                                [class.selected]="line === selectedLine"
+                                (click)="selectLine(line)">
+                                    <td>{{line.due | number:'1.0'}}</td>
+                                    <td><input type="text" [(ngModel)]="line.tendered"></td>
+                                    <td>{{line.change}}</td>
+                                    <td>{{line.type}}</td>
+                                    <td class="text-center"
+                                    (click)="removePaymentLine(line)">
+                                        <i class="fa fa-times-circle align-middle"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </ng-template>
                 </div>
             </div>
         </div>

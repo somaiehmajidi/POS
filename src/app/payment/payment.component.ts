@@ -48,18 +48,31 @@ export class PaymentComponent implements OnInit {
   }
 
   addPaymentLine(type){
+    let id:number = 0;
+    if (this.payment.length === 0){
+      id = 1
+    }
+    else{
+      id = this.payment[this.payment.length -1].id + 1;
+    }
     let line = {
+      id: id,
       type: type,
       due: this.invoice.paymentAmount,
-      tendered: 0
+      tendered: 0,
+      change: 0
     }
     this.payment.push(line);
     this.selectedLine = line;
-    console.log(this.payment)
   }
 
   removePaymentLine(line){
-    this.payment.slice(line,1);
+    let index = this.payment.map(x => {
+      return x.id;
+    }).indexOf(line.id)
+    
+    this.payment.splice(index,1);
+    this.selectedLine = this.payment[this.payment.length -1]
   }
 
   selectLine(line){
@@ -73,8 +86,10 @@ export class PaymentComponent implements OnInit {
   validate(){}
 
   ngAfterContentChecked(){
-    // let customers = this.cart.selectedInvoice.customers;
-    // this.customer = customers[0];
+    if(this.selectedLine){
+      this.selectedLine.change = this.selectedLine.tendered - this.selectedLine.due;
+    }
+    
   }
 
 }

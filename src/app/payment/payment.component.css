@@ -78,7 +78,24 @@ button span{
     background-color: white;
     border-top: 1px solid #cfcfcf;
 }
+    .line input{
+        border: none;
+    }
 .line.selected{
     background-color: #0075c4;
     color: white;
+}
+.table td, 
+.table th{
+    vertical-align: middle;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-size: 16px;
+    line-height: 32px;
+}
+.table thead td{
+    font-size: 12px !important;
+}
+.table i{
+    font-size: 24px;
 }

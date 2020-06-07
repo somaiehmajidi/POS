@@ -5,6 +5,7 @@ export interface Factor {
     paymentLines: Payment[] 
 }
 export interface Payment{
+    id: number,
     type: string,
     due: number,
     tendered: number,
