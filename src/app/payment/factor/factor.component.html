@@ -1,0 +1,47 @@
+<div class="container" style="margin-top: 65px;">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div style="margin: 0.5rem 0 0.75rem">
+                <button class="btn btn-primary" style="width:100%">چاپ فاکتور</button>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row" style="direction: rtl;text-align: right; line-height: 24px; font-size: 14px;">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 border" style="background-color: white;">
+            <br>
+            <div class="text-center">لوگوی شما
+                <i class="fa fa-photo"></i>
+            </div>
+            <div class="text-center">اطلاعات فروشگاه</div>
+            <div class="text-center">{{date |  date:'medium'}}</div>
+            <hr>
+            <div class="orders">
+                <div *ngFor="let order of factor.orders">
+                    <div class="pull-right">{{order.name}}</div>
+                    <div class="pull-left">{{order.price}}</div>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+            <div>
+                <span>قیمت کل:</span>
+                <span>{{factor.total}}</span>
+            </div>
+            <hr>
+            <div class="payments">
+                <div *ngFor="let line of factor.paymentLines">
+                    <span>{{line.type}}</span>
+                    <span>{{line.tendered}}</span>
+                </div>
+            </div>
+            <div>
+                <span>باقیمانده: </span>
+                <span>{{factor.charge}}</span>
+            </div>
+            <br>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>

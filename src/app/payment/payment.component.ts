@@ -131,9 +131,12 @@ export class PaymentComponent implements OnInit {
         change: this.totalChange
       }
       this.factor.push(factor);
+      //test factor..
+      this.cart.factor = factor;
       //console.log(this.factor)
+      this.router.navigate(["/factor"])
     }
-    
+
   }
 
   sendEmail(customer){

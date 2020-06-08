@@ -23,6 +23,9 @@ export class CartService {
     selectedInvoice;
     selectedOrder;
 
+    //test factors...
+    factor;
+
     public add(product){
       let invoiceId = this.selectedInvoice.id;
       
