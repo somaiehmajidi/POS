@@ -89,7 +89,7 @@ export class PaymentComponent implements OnInit {
     if(this.selectedLine){
       this.selectedLine.change = this.selectedLine.tendered - this.selectedLine.due;
     }
-    
+    this.customer = this.customerService.selectedCustomer;
   }
 
 }

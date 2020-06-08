@@ -36,6 +36,7 @@ export class CustomerService {
 
     setCustomer(customer){
         this.selectedCustomer = customer;
+
     }
 
     editCustomer(customer){

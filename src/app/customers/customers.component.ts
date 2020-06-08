@@ -3,6 +3,7 @@ import { Customer } from '../shared/invoice.model';
 import { CustomerService } from '../shared/customer.service';
 import { Location } from '@angular/common';
 import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
+import { NotificationService } from '../shared/notification.service';
 
 @Component({
   selector: 'app-customers',
@@ -23,7 +24,8 @@ export class CustomersComponent implements OnInit {
   selectStatus: boolean = false;
 
   constructor(private customerService: CustomerService,
-              private location: Location) { }
+              private location: Location,
+              private notify: NotificationService) { }
 
   zoom = 13;
   options = this.customerService.options;
@@ -78,6 +80,7 @@ export class CustomersComponent implements OnInit {
   setCustomer(customer){
     this.customerService.setCustomer(customer);
     this.location.back();
+    this.notify.showSuccess("مشتری انتخاب شد!","Done");
   }
 
   displayAppAdd(){

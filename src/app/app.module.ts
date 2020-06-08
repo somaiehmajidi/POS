@@ -26,6 +26,8 @@ import { EditCustomerComponent } from './customers/edit-customer/edit-customer.c
 
 import { GoogleMapsModule } from '@angular/google-maps';
 
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +54,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     FormsModule,
     NoopAnimationsModule,
     MatDialogModule,
+    ToastrModule.forRoot(),
   ],
   providers: [ProductService],
   bootstrap: [AppComponent],
