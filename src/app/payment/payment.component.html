@@ -2,7 +2,7 @@
 <div class="container" style="margin-top: 65px;">
     <div class="row payment-bar">
         <div class="col-md-6">
-            <button class="btn-sm btn-primary" (click)="validate()">
+            <button class="btn-sm btn-primary" (click)="validateFactor()">
                 <span><i class="fa fa-arrow-right"></i></span>
                 <span>فاکتور</span>
             </button>
@@ -16,20 +16,19 @@
     </div>
     <div class="row border">
         <div class="col-md-2 placeHolder">
-            <div *ngFor="let type of paymentTypes"
+            <button *ngFor="let type of paymentTypes"
             class="payment-methods"
-            (click)="addPaymentLine(type)">
-                <span>{{type}}</span>
-            </div>
-            <div class="payment-methods disabled"><span>کارت هدیه</span></div>
-            <div class="payment-methods disabled"><span>چک</span></div>
+            (click)="addPaymentLine(type)"
+            value = "type">{{type}}</button>
+            <button class="payment-methods" disabled>کارت هدیه</button>
+            <button class="payment-methods" disabled>چک</button>
         </div>
         <div class="col-md-7 border-right border-left">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="payment-lines">
-                        <span>{{invoice.paymentAmount | number:'1.0'}}</span>
-                        <span>تومان</span>
+                    <div class="payment-amount">
+                        <span class="amount">{{invoice.paymentAmount | number:'1.0'}}</span>
+                        <span class="currency">تومان</span>
                         <div 
                         *ngIf = "payment.length === 0; else paymentHolder">
                         لطفا یک روش پرداخت را انتخاب کنید!</div>
@@ -39,7 +38,7 @@
                             <thead>
                                 <tr>
                                     <td width="25%">مبلغ</td>
-                                    <td width="25%">دربافتی</td>
+                                    <td width="25%">دریافتی</td>
                                     <td width="25%">باقیمانده</td>
                                     <td width="20%">پرداخت</td>
                                     <td width="5%"></td>
@@ -51,8 +50,14 @@
                                 [class.selected]="line === selectedLine"
                                 (click)="selectLine(line)">
                                     <td>{{line.due | number:'1.0'}}</td>
-                                    <td><input type="text" [(ngModel)]="line.tendered"></td>
-                                    <td>{{line.change}}</td>
+                                    <td><input type="text" 
+                                        [(ngModel)]="line.tendered"
+                                        [readonly]="isReadOnly"></td>
+                                    <td>
+                                        <span *ngIf="line.type === 'نقد'">
+                                            {{line.change | number:'1.0'}}
+                                        </span>
+                                    </td>
                                     <td>{{line.type}}</td>
                                     <td class="text-center"
                                     (click)="removePaymentLine(line)">
@@ -61,6 +66,10 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <!-- <div>
+                            <span>مبلغ باقیمانده: </span>
+                            <span></span>
+                        </div> -->
                     </ng-template>
                 </div>
             </div>
@@ -74,11 +83,15 @@
                     {{customer.firstName}} {{customer.lastName}}
                 </span>
             </div>
-            <div class="payment-method">
+            <div class="payment-method" 
+            (click)="sendEmail(customer)"
+            [class.active] = "emailSent">
                 <span><i class="fa fa-at"></i></span>
                 <span>ارسال ایمیل</span>
             </div>
-            <div class="payment-method active">
+            <div class="payment-method" 
+            (click)="sendMsg(customer)"
+            [class.active] = "msgSent">
                 <span><i class="fa fa-envelope-o"></i></span>
                 <span>ارسال پیامک</span>
             </div>

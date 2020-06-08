@@ -2,7 +2,9 @@ export interface Factor {
     id: number,
     invoiceId: number,
     total: number,
-    paymentLines: Payment[] 
+    orders: [],
+    paymentLines: Payment[],
+    change?: number
 }
 export interface Payment{
     id: number,

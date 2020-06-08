@@ -44,19 +44,24 @@ button span{
         border-color: #0067a7;
         color: #0075c4;
     }
-.payment-lines{
-    text-align: center;
-    padding: 1rem 0;
-}
 .payment-methods .btn{
     margin:0px 10px;
 }
-.payment-lines span:first-child{
-    font-size: 32px;
+.payment-amount{
+    text-align: center;
+    padding: 1rem 0;
+}
+.payment-amount .currency,
+.payment-amount .amount{
     color: #0075c4;
+}
+.payment-amount .amount{
+    font-size: 32px;
     text-shadow: 2px 2px 3px #fff;
 }
 .payment-methods{
+    display: block;
+    width: 100%;
     border: 1px solid #ccc;
     border-radius: 3px;
     padding: 0.5rem;
@@ -64,12 +69,12 @@ button span{
     font-size: 14px;
     margin-bottom: 0.5rem;
 }
-.payment-methods:hover{
+/* .payment-methods:hover{
     cursor: pointer;
 }
 .payment-methods.disabled{
     color: #aaa;
-}
+} */
 .placeHolder{
     margin-top: 1rem;
     margin-bottom: 1rem;
