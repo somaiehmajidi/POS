@@ -4,6 +4,7 @@ import { CustomerService } from '../shared/customer.service';
 import { Location } from '@angular/common';
 import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
 import { NotificationService } from '../shared/notification.service';
+import { CartService } from '../shared/cart.service';
 
 @Component({
   selector: 'app-customers',
@@ -24,6 +25,7 @@ export class CustomersComponent implements OnInit {
   selectStatus: boolean = false;
 
   constructor(private customerService: CustomerService,
+              private cart: CartService,
               private location: Location,
               private notify: NotificationService) { }
 
@@ -79,6 +81,7 @@ export class CustomersComponent implements OnInit {
 
   setCustomer(customer){
     this.customerService.setCustomer(customer);
+    this.cart.addCustomer(customer);
     this.location.back();
     this.notify.showSuccess("مشتری انتخاب شد!","Done");
   }

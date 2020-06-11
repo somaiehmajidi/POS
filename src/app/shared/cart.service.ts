@@ -213,5 +213,12 @@ export class CartService {
     return this.invoices.find(invoice => invoice.id === id)
   }
 
+  addCustomer(customer){
+    let invoiceId = this.selectedInvoice.id;
+    let result = this.invoices.find(x => x.id === invoiceId)
+    result.customers = [];
+    result.customers.push(customer)
+  }
+
 
 }

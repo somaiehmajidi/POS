@@ -32,18 +32,16 @@ export class PaymentComponent implements OnInit {
             private notify: NotificationService) { }
 
   ngOnInit(): void {
-    this.invoice = this.cart.selectedInvoice;
-    console.log(this.invoice);
-    
+    this.invoice = this.cart.selectedInvoice;    
     let customers = this.invoice.customers;
     if (customers.length !==0 ){
        this.customer = customers[0]
     }
-    else{
-      this.customer = this.customerService.selectedCustomer;
+    //else{
+      //
       //this.invoice.customers.push(this.customer)
       //this.cart.selectedInvoice.push(this.customer);
-    }
+    //}
 
 
 
@@ -140,30 +138,40 @@ export class PaymentComponent implements OnInit {
   }
 
   sendEmail(customer){
-    if(customer){
-      this.notify.showSuccess("ایمیل ارسال شد!","Done");
-      this.emailSent = true;
+    if (this.payment.length === 0){
+      this.notify.showError("پرداختی ثبت نشده!","خطا")
     }
     else{
-      this.notify.showWarning("مشتری انتخاب نشده!","Alert")
+      if(customer){
+        this.notify.showSuccess("ایمیل ارسال شد!","Done");
+        this.emailSent = true;
+      }
+      else{
+        this.notify.showWarning("مشتری انتخاب نشده!","Alert")
+      }
     }
   }
 
   sendMsg(customer){
-    if(customer){
-      this.notify.showSuccess("پیامک ارسال شد!","Done");
-      this.msgSent = true;
+    if (this.payment.length === 0){
+      this.notify.showError("پرداختی ثبت نشده!","Error")
     }
     else{
-      this.notify.showWarning("مشتری انتخاب نشده!","Alert")
-    }
+      if(customer){
+        this.notify.showSuccess("پیامک ارسال شد!","Done");
+        this.msgSent = true;
+      }
+      else{
+        this.notify.showWarning("مشتری انتخاب نشده!","Alert")
+      }
+    } 
   }
 
   ngAfterContentChecked(){
     if(this.selectedLine){
       this.selectedLine.change = this.selectedLine.tendered - this.selectedLine.due;
     }
-    this.customer = this.customerService.selectedCustomer;
+    this.customer = this.invoice.customers[0];
   }
 
 }

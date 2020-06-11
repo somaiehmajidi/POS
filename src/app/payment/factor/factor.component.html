@@ -8,39 +8,59 @@
         </div>
         <div class="col-md-4"></div>
     </div>
-    <div class="row" style="direction: rtl;text-align: right; line-height: 24px; font-size: 14px;">
-        <div class="col-md-4"></div>
-        <div class="col-md-4 border" style="background-color: white;">
-            <br>
-            <div class="text-center">لوگوی شما
-                <i class="fa fa-photo"></i>
-            </div>
-            <div class="text-center">اطلاعات فروشگاه</div>
-            <div class="text-center">{{date |  date:'medium'}}</div>
-            <hr>
-            <div class="orders">
-                <div *ngFor="let order of factor.orders">
-                    <div class="pull-right">{{order.name}}</div>
-                    <div class="pull-left">{{order.price}}</div>
-                    <div style="clear: both;"></div>
-                </div>
-            </div>
-            <div>
-                <span>قیمت کل:</span>
-                <span>{{factor.total}}</span>
-            </div>
-            <hr>
-            <div class="payments">
-                <div *ngFor="let line of factor.paymentLines">
-                    <span>{{line.type}}</span>
-                    <span>{{line.tendered}}</span>
-                </div>
-            </div>
-            <div>
-                <span>باقیمانده: </span>
-                <span>{{factor.charge}}</span>
-            </div>
-            <br>
+
+    <div class="row">
+        <div class="col-md-4">
+            
+        </div>
+        <div class="col-md-4">
+            <table class="table border">
+                <tr>
+                    <td class="text-center">
+                        <div>لوگوی شما <i class="fa fa-photo"></i></div>
+                        <div>اطلاعات فروشگاه</div>
+                        <div>{{date |  date:'medium'}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="orders">
+                        <div *ngFor="let order of factor.orders" class="order">
+                            <div class="pull-right">{{order.name}}</div>
+                            <div class="pull-left">{{order.price}}</div>
+                            <div style="clear: both;"></div>
+                            <div>
+                                <span>تعداد: </span>
+                                <span>{{order.unit}}</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="font-weight-bold">
+                            <div class="pull-right">قیمت کل:</div>
+                            <div class="pull-left">{{factor.total}}</div>
+                            <div style="clear: both;"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div *ngFor="let line of factor.paymentLines">
+                            <span>{{line.type}}</span>
+                            <span>{{line.tendered}}</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            <span>باقیمانده: </span>
+                            <span>{{factor.charge}}</span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </div>
         <div class="col-md-4"></div>
     </div>

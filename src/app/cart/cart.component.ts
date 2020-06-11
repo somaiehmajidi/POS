@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../shared/cart.service';
 import { Invoice, Order, Customer } from '../shared/invoice.model';
 import { Router } from '@angular/router';
-import { CustomerService } from '../shared/customer.service';
+import { NotificationService } from '../shared/notification.service';
 
 @Component({
   selector: 'app-cart',
@@ -14,24 +14,21 @@ export class CartComponent implements OnInit {
   orders: Order[] = [];
   invoices: Invoice[] = []
   total: number = 0;
-  assignedCustomer: Customer;
+  customer: Customer;
 
   selectedInvoice;
   selectedOrder;
   
   constructor(private cartService: CartService,
-              private customerService: CustomerService,
-              private router: Router) { }
+              private router: Router,
+              private notify: NotificationService) { }
 
   ngOnInit(){
     this.invoices = this.cartService.invoices;
     this.selectedInvoice = this.cartService.selectedInvoice;
     this.selectedOrder = this.cartService.selectedOrder;
-    
-    if (this.customerService.selectedCustomer){
-      this.assignedCustomer = this.customerService.selectedCustomer;
-      this.selectedInvoice.customers.push(this.assignedCustomer)
-    }
+
+    this.customer = this.selectedInvoice.customers[0];
   }
 
   onSelect(order: Order): void{
@@ -49,10 +46,16 @@ export class CartComponent implements OnInit {
     //   }, 0);
     this.selectedInvoice = this.cartService.selectedInvoice;
     this.selectedOrder = this.cartService.selectedOrder;
+    this.customer = this.selectedInvoice.customers[0];
   }
 
   pay(){
-    this.router.navigate(['payment']);
+    if(this.selectedInvoice.orders.length === 0 ){
+      this.notify.showError("سبد خرید خالی است!","خطا")
+    }
+    else{
+      this.router.navigate(['payment']);
+    }
   }
 
 }

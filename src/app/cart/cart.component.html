@@ -56,10 +56,10 @@
                     <div class="customer">
                         <div (click)="addCustomer()" class="cart-customer">
                             <div><i class="fa fa-user-circle"></i></div>
-                            <span *ngIf="!assignedCustomer">انتخاب مشتری</span>
-                            <span *ngIf="assignedCustomer">
-                                {{assignedCustomer.firstName}} {{assignedCustomer.lastName}}
-                            </span>
+                                <span *ngIf="customer">
+                                    {{customer.firstName}} {{customer.lastName}}
+                                </span>
+                            <span *ngIf="!customer">انتخاب مشتری</span>
                         </div>
                     </div>
                     <div class="payment" (click)="pay()">

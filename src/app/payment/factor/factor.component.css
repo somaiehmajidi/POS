@@ -1,0 +1,16 @@
+table{
+    background-color: white;
+    direction: rtl;
+    text-align: right; 
+    line-height: 24px; 
+    font-size: 14px;
+}
+table tr td{
+    padding: 5%;
+}
+.orders div.order{
+    border-bottom: 1px dotted #ccc;
+}
+    .orders div.order:last-child{
+        border-bottom: none !important;
+    }
