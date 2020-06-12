@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Order } from '../../shared/invoice.model';
 import {CartService } from '../../shared/cart.service';
+import { NotificationService } from '../../shared/notification.service';
+
 
 @Component({
   selector: 'app-edit-cart',
@@ -17,21 +19,50 @@ export class EditCartComponent implements OnInit {
   operator = null;
   waitForSecondNumber = false;
   operand = null;
-
   quantity = 0;
   price = 0;
   discount = '0';
 
   isActive = false; 
+
+  //solved keyboard conflicts..
+  @ViewChild('keyboard') table;
+  private wasInside = false;
+
+  @HostListener('click')
+  clickInside() {
+    //console.log('clicked inside')
+    this.wasInside = true;
+  }
   
-  constructor(private cart: CartService) {
+  @HostListener('document:click')
+  clickout() {
+    if (!this.wasInside) {
+      this.cart.currentNumber = '0';
+      //console.log('clicked outside')
+    }
+    this.wasInside = false;
+  }
+  //..
+  
+  constructor(private cart: CartService,
+            private notify: NotificationService,
+            private eRef: ElementRef) {
+              this.table
   }
 
   ngOnInit(): void {
+    this.operator = this.cart.operator;
   }
 
   public getNumber(v: string){
-    this.cart.getNumber(v);
+    if (!this.data){
+      console.log(this.data)
+      this.notify.showWarning('یک سفارش انتخاب کنید!','alert');
+    }
+    else{
+      this.cart.getNumber(v);
+    }
     // if(this.waitForSecondNumber)
     // {
     //   this.currentNumber = v;
@@ -104,6 +135,10 @@ export class EditCartComponent implements OnInit {
 
   public remove(){
     this.cart.onRemove(this.data);
+  }
+
+  public getNegative(){
+    this.cart.getNegative();
   }
 
 }

@@ -2,7 +2,7 @@
     <!-- <div>
         <input type="text" class="calculator-screen" [value]="currentNumber" disabled />
     </div> -->
-    <table class="calculator-operator table table-borderless">
+    <table class="calculator-operator table table-borderless" #keyboard>
         <tr class="border-bottom">
             <td class="border-left"><button type="button" (click) = "getNumber('1')" value="1">1</button></td>
             <td class="border-left"><button type="button" (click) = "getNumber('2')" value="2">2</button></td>
@@ -43,10 +43,12 @@
             <td class="border-left"><button type="button" (click) = "getDecimal()" class="decimal" value=".">.</button>
                 </td>
             <td class="border-left"><button type="button" (click) = "getNumber('0')" value="0">0</button></td>
-            <td class="border-left"><button type="button" (click) = "remove()"  class="remove" value="remove">
-                <i class="fa fa-close"></i>
+            <td class="border-left">
+                <button type="button" (click) = "getNegative()"  class="negative" value="negative">+/-</button>
+            </td>
+            <td><button type="button" (click) = "remove()"  class="remove" value="remove">
+                <i class="fa fa-window-close-o"></i>
             </button></td>
-            <td></td>
         </tr>
     </table>
 <!--</div>-->

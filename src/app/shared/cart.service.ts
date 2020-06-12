@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Invoice, Order } from '../shared/invoice.model'
+import { Invoice, Order } from '../shared/invoice.model';
 
 @Injectable({
     providedIn: 'root'  
@@ -11,7 +11,7 @@ export class CartService {
     orders: Order[] = [];
 
     currentNumber = '0';
-    operator = null;
+    operator = 'qty';
     waitForSecondNumber = false;
     operand = null;
 
@@ -19,6 +19,7 @@ export class CartService {
     price = 0;
     discount = '0';
 
+    isNegative = false;
     isActive = false;
     selectedInvoice;
     selectedOrder;
@@ -97,7 +98,15 @@ export class CartService {
     onRemove(order: Order):void{
       const index: number = this.orders.indexOf(order);
       if (index !== -1){
-        this.orders.splice(index, 1);
+        if (order.totalPrice === 0){
+          this.orders.splice(index, 1);
+          let id = this.orders.length;
+          this.selectedOrder = this.orders[id-1]
+        }
+        else{
+          order.unit = 0;
+          order.totalPrice = 0;
+        }
       }
     }
      
@@ -108,7 +117,8 @@ export class CartService {
     {
       this.currentNumber = v;
       this.waitForSecondNumber = false;
-    }else{
+    }
+    else{
       this.currentNumber === '0'? this.currentNumber = v: this.currentNumber += v;
     }
     if (this.operator !== null){
@@ -125,7 +135,13 @@ export class CartService {
           data.discount = this.discount
         }else
         {
-          this.discount = this.currentNumber
+          if (+this.currentNumber > 100){
+            this.discount = '100';
+            this.currentNumber = '100'; 
+          }
+          else {
+            this.discount = this.currentNumber
+          }
           data.totalPrice = (data.unit*data.price)
           data.totalPrice = data.totalPrice - (data.totalPrice*(Number(this.currentNumber))/100); 
           data.discount = this.discount
@@ -149,6 +165,22 @@ export class CartService {
     }
   }
 
+  getNegative(){
+    this.isNegative = !this.isNegative;
+    let op = this.operator;
+    if(this.isNegative){
+      switch(op){
+        case 'qty':
+          // this.selectedOrder.unit = -Math.abs(this.selectedOrder.unit) 
+          // this.selectedOrder.totalPrice = -Math.abs(this.selectedOrder.totalPrice)         
+          break
+        case 'disc':
+          break
+        case 'price':
+          break
+      }
+    }
+  }
 
   public getOperand(op: string){
     switch(op){
