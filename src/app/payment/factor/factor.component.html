@@ -14,7 +14,7 @@
             
         </div>
         <div class="col-md-4">
-            <table class="table border">
+            <table class="table">
                 <tr>
                     <td class="text-center">
                         <div>لوگوی شما <i class="fa fa-photo"></i></div>
@@ -24,24 +24,44 @@
                 </tr>
                 <tr>
                     <td class="orders">
-                        <div *ngFor="let order of factor.orders" class="order">
-                            <div class="pull-right">{{order.name}}</div>
-                            <div class="pull-left">{{order.price}}</div>
-                            <div style="clear: both;"></div>
-                            <div>
-                                <span>تعداد: </span>
-                                <span>{{order.unit}}</span>
-                            </div>
-                        </div>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td width='50%'>نام کالا</td>
+                                    <td class="text-center" width='20%'>تعداد</td>
+                                    <td width='30%' class="text-center">مجموع</td>
+                                </tr>
+                            </thead>
+                            <tr *ngFor="let order of factor.orders"> 
+                                <td>
+                                    <div>{{order.name}}</div>
+                                    <div><span>فی: </span>
+                                        {{order.price | number:'1.0'}}</div>
+                                </td>
+                                <td class="text-center">{{order.unit}}</td>
+                                <td class="text-center">{{order.totalPrice | number:'1.0'}}</td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <div class="font-weight-bold">
-                            <div class="pull-right">قیمت کل:</div>
-                            <div class="pull-left">{{factor.total}}</div>
-                            <div style="clear: both;"></div>
-                        </div>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td>مبلغ فاکتور</td>
+                                    <td>{{factor.total | number:'1.0'}}</td>
+                                </tr>
+                                <tr>
+                                    <td>تخفیف</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>مبلغ قابل پرداخت</td>
+                                    <td class="font-weight-bold">{{factor.total | number:'1.0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </td>
                 </tr>
                 <tr>

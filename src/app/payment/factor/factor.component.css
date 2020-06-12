@@ -6,11 +6,11 @@ table{
     font-size: 14px;
 }
 table tr td{
-    padding: 5%;
+    padding: 2.5% 5%;
 }
-.orders div.order{
+/* .orders div.order{
     border-bottom: 1px dotted #ccc;
 }
     .orders div.order:last-child{
         border-bottom: none !important;
-    }
+    } */

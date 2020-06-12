@@ -90,17 +90,17 @@ button span{
     background-color: #0075c4;
     color: white;
 }
-.table td, 
-.table th{
+.payLines td, 
+.payLines th{
     vertical-align: middle;
     padding-top: 1px;
     padding-bottom: 1px;
     font-size: 16px;
     line-height: 32px;
 }
-.table thead td{
+.payLines thead td{
     font-size: 12px !important;
 }
-.table i{
+.payLines i{
     font-size: 20px;
 }
