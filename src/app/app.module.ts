@@ -12,6 +12,7 @@ import { CategoriesComponent } from './products/categories/categories.component'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { QuickKeyModalComponent } from './products/quick-key-modal/quick-key-modal.component';
 import { ProductService } from './shared/product.service';
 
@@ -28,6 +29,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 
 import { ToastrModule } from 'ngx-toastr';
 import { FactorComponent } from './payment/factor/factor.component';
+import { TableComponent } from './restaurants/table/table.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { FactorComponent } from './payment/factor/factor.component';
     MainComponent,
     AddCustomerComponent,
     EditCustomerComponent,
-    FactorComponent
+    FactorComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ import { FactorComponent } from './payment/factor/factor.component';
     FormsModule,
     NoopAnimationsModule,
     MatDialogModule,
+    DragDropModule,
     ToastrModule.forRoot(),
   ],
   providers: [ProductService],

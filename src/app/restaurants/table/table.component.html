@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 boundary" >
+            <div class="table" 
+            *ngFor = "let table of tables"
+            cdkDragBoundary=".boundary" 
+            cdkDrag
+            [cdkDragDisabled]="table.disabled"
+            (cdkDragEnded)="drop($event)"
+            [class.selected]= "table === selectedTable"
+            (click)="onSelect(table)"
+            (dblclick)="onBook(table)">
+                <h4>{{table.value}}</h4>
+                <div class="guest">{{table.guest}}</div>
+            </div>
+            <div class="edit-box">
+                <button class="btn btn-outline-primary add" 
+                (click)="addTable()"><i class="fa fa-plus"></i></button>
+                <button class="btn btn-outline-primary remove" 
+                (click)="removeTable()"
+                [disabled]="!selectedTable"><i class="fa fa-trash"></i></button>
+                <button class="btn btn-outline-primary guest" 
+                (click)="manageGuests()"
+                [disabled]="!selectedTable"><i class="fa fa-user"></i></button>
+                <button class="btn btn-outline-primary text" 
+                (click)="renameTable()"
+                [disabled]="!selectedTable"><i class="fa fa-font"></i></button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
