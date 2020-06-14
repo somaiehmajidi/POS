@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { RenameTableComponent } from './rename-table/rename-table.component';
+import { RenameTableComponent } from '../rename-table/rename-table.component';
+import { GuestTableComponent } from '../guest-table/guest-table.component';
 
 @Component({
   selector: 'app-table',
@@ -62,7 +63,7 @@ export class TableComponent implements OnInit {
 
   manageGuests(){
     let table = this.tables[this.tables.indexOf(this.selectedTable)]
-    const dialogRef = this.dialog.open(RenameTableComponent,{
+    const dialogRef = this.dialog.open(GuestTableComponent,{
       width: '35%',
       data: table.guest
     });

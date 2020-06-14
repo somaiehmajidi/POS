@@ -32,7 +32,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { ToastrModule } from 'ngx-toastr';
 import { FactorComponent } from './payment/factor/factor.component';
 import { TableComponent } from './restaurants/table/table.component';
-import { RenameTableComponent } from './restaurants/table/rename-table/rename-table.component';
+import { RenameTableComponent } from './restaurants/rename-table/rename-table.component';
 import { GuestTableComponent } from './restaurants/guest-table/guest-table.component';
 
 @NgModule({

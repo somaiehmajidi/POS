@@ -8,7 +8,7 @@ export interface DialogData {
 @Component({
   selector: 'app-guest-table',
   templateUrl: './guest-table.component.html',
-  styleUrls: ['./guest-table.component.css']
+  styles: ['Button{margin-left:5px}']
 })
 export class GuestTableComponent implements OnInit {
 
