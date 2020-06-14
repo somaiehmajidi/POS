@@ -10,8 +10,9 @@
             [class.selected]= "table === selectedTable"
             (click)="onSelect(table)"
             (dblclick)="onBook(table)">
-                <h4>{{table.value}}</h4>
+                <h6>{{table.value}}</h6>
                 <div class="guest">{{table.guest}}</div>
+                
             </div>
             <div class="edit-box">
                 <button class="btn btn-outline-primary add" 
@@ -25,8 +26,7 @@
                 <button class="btn btn-outline-primary text" 
                 (click)="renameTable()"
                 [disabled]="!selectedTable"><i class="fa fa-font"></i></button>
-            </div>
-            
+            </div> 
         </div>
     </div>
 </div>

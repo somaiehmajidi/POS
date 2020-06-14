@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDialog } from '@angular/material/dialog';
+import { RenameTableComponent } from './rename-table/rename-table.component';
 
 @Component({
   selector: 'app-table',
@@ -21,7 +22,7 @@ export class TableComponent implements OnInit {
 
   selectedTable;
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -61,8 +62,16 @@ export class TableComponent implements OnInit {
   manageGuests(){}
 
   renameTable(){
-    let index = this.tables.indexOf(this.selectedTable);
-    console.log(index)
+    let table = this.tables[this.tables.indexOf(this.selectedTable)]
+    const dialogRef = this.dialog.open(RenameTableComponent,{
+      width: '35%',
+      data: table.value
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result){
+        this.tables.find(x=> x.id === table.id).value = result;
+      }
+    });
   }
 
 }

@@ -1,0 +1,28 @@
+<div class="container text-right" style="direction: rtl;">   
+    <div class="row border-bottom">
+        <div class="col-md-12">
+            <h6>عنوان میز</h6>
+        </div>
+    </div> 
+    <div class="row" style="margin: 50px 0px">
+        <div class="col-md-12">
+            <mat-dialog-content>
+                <input type="text" class="form-control" [(ngModel)]="data" cdkFocusInitial>
+            </mat-dialog-content>
+        </div>
+    </div>
+    <div class="row border-top">
+        <div class="col-md-12">
+            <mat-dialog-actions>
+                <button  
+                class="btn-sm btn-primary"
+                [mat-dialog-close]="data" 
+                >تایید</button>
+                <button
+                class="btn-sm btn-dark" 
+                (click)="onNoClick()">لغو</button>
+             </mat-dialog-actions>
+        </div>
+    </div>
+</div>
+
