@@ -26,6 +26,13 @@
                 <button class="btn btn-outline-primary text" 
                 (click)="renameTable()"
                 [disabled]="!selectedTable"><i class="fa fa-font"></i></button>
+                <button class="btn btn-outline-primary shape" 
+                (click)="reshapeTable()"
+                [disabled]="!selectedTable"
+                >
+                    <i class="fa fa-square" *ngIf="!isCircle"></i>
+                    <i class="fa fa-circle" *ngIf="isCircle"></i>
+                </button>
             </div> 
         </div>
     </div>

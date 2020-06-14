@@ -21,6 +21,7 @@ export class TableComponent implements OnInit {
   ]
 
   selectedTable;
+  isCircle = false;
 
   constructor(private dialog: MatDialog) { }
 
@@ -59,7 +60,18 @@ export class TableComponent implements OnInit {
     }
   }
 
-  manageGuests(){}
+  manageGuests(){
+    let table = this.tables[this.tables.indexOf(this.selectedTable)]
+    const dialogRef = this.dialog.open(RenameTableComponent,{
+      width: '35%',
+      data: table.guest
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result){
+        this.tables.find(x=> x.id === table.id).guest = result;
+      }
+    });
+  }
 
   renameTable(){
     let table = this.tables[this.tables.indexOf(this.selectedTable)]
@@ -72,6 +84,10 @@ export class TableComponent implements OnInit {
         this.tables.find(x=> x.id === table.id).value = result;
       }
     });
+  }
+
+  reshapeTable(){
+    this.isCircle = !this.isCircle;
   }
 
 }

@@ -33,6 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { FactorComponent } from './payment/factor/factor.component';
 import { TableComponent } from './restaurants/table/table.component';
 import { RenameTableComponent } from './restaurants/table/rename-table/rename-table.component';
+import { GuestTableComponent } from './restaurants/guest-table/guest-table.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { RenameTableComponent } from './restaurants/table/rename-table/rename-ta
     EditCustomerComponent,
     FactorComponent,
     TableComponent,
-    RenameTableComponent
+    RenameTableComponent,
+    GuestTableComponent
   ],
   imports: [
     BrowserModule,
