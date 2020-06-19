@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RenameTableComponent } from '../rename-table/rename-table.component';
 import { GuestTableComponent } from '../guest-table/guest-table.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -24,7 +25,7 @@ export class TableComponent implements OnInit {
   selectedTable;
   isCircle = false;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -38,7 +39,8 @@ export class TableComponent implements OnInit {
   }
 
   onBook(table){
-    alert(table.value)
+    this.router.navigate(['/main']); 
+    return table;
   }
 
   // Edit tables

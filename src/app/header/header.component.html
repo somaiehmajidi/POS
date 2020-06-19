@@ -1,9 +1,18 @@
 <nav class="navbar fixed-top navbar-dark bg-dark">
     <div class="header-wrap">
       <a class="navbar-brand" href="#">Point Of Sale</a>
+      <button class="btn btn-sm btn-outline-secondary btn-restaurant"
+      (click)="setTable()">restaurant pos</button>
     </div>
     <div class="headre-tabs">
       <ul>
+        <li *ngIg="table">
+          <a class="table">
+            <span><i class="fa fa-arrow-left"></i></span>
+            <span>طبقه اول</span>
+            <span> (T1) </span>
+          </a>
+        </li>
         <li *ngFor="let invoice of invoices; let last = isLast" 
             [class.selected]="invoice === selectedInvoice"
             (click)="onClick(invoice)">
@@ -13,7 +22,8 @@
           </a>
         </li>
       </ul>
-      <div class="d-inline-flex">
+      <div class="d-inline-flex btns"
+      *ngIf="invoices.length !==0">
         <button class="btn btn-dark" (click)="addSession()">+</button>
         <button class="btn btn-dark" (click)="removeSession(selectedInvoice)">-</button>
       </div>

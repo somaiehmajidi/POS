@@ -31,6 +31,7 @@
     width: 65.5%;
     font-size: 14px;
     overflow-y: hidden;
+    height: 50px;
 }
 .headre-tabs ul{
     float: left;
@@ -60,4 +61,18 @@
     width: 40px;
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
+}
+.btns{
+    height: 50px;
+}
+.table{
+    background-color:#0075c4;
+    color: white;
+}
+.table span{
+    display: inline-flex;
+    padding: 0px 3px;
+}
+.btn-restaurant{
+    vertical-align: text-bottom;
 }

@@ -49,22 +49,28 @@
         </div>
     </div>
     <!-- edit cart options -->
-    <div class="edit-card">
-        <table class="table table-bordered">
+    <div class="edit-card px-4 py-2">
+        <app-actions></app-actions>
+        <table class="table">
             <tr>
                 <td width="35%">
-                    <div class="customer">
-                        <div (click)="addCustomer()" class="cart-customer">
-                            <div><i class="fa fa-user-circle"></i></div>
+                    <div class="text-center ml-3" style="padding-top: 2px;">
+                        <button class="btn btn-outline-primary btn-block cart-customer" 
+                        (click)="addCustomer()">
+                            <div>
+                                <i class="fa fa-user-circle"></i>
+                            </div>
                                 <span *ngIf="customer">
                                     {{customer.firstName}} {{customer.lastName}}
                                 </span>
                             <span *ngIf="!customer">انتخاب مشتری</span>
-                        </div>
+                            </button>
                     </div>
-                    <div class="payment" (click)="pay()">
-                        <i class="fa fa-arrow-circle-left"></i>
-                        <div>پرداخت</div>
+                    <div class="ml-3" style="padding-top: 2px;">
+                        <button class="btn btn-outline-primary btn-block payment" (click)="pay()">
+                            <i class="fa fa-arrow-circle-left"></i>
+                            <div>پرداخت</div>
+                        </button>
                     </div>
                 </td>
                 <td width="65%">

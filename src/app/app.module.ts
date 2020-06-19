@@ -34,6 +34,8 @@ import { FactorComponent } from './payment/factor/factor.component';
 import { TableComponent } from './restaurants/table/table.component';
 import { RenameTableComponent } from './restaurants/rename-table/rename-table.component';
 import { GuestTableComponent } from './restaurants/guest-table/guest-table.component';
+import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
+import { ActionsComponent } from './cart/actions/actions.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { GuestTableComponent } from './restaurants/guest-table/guest-table.compo
     FactorComponent,
     TableComponent,
     RenameTableComponent,
-    GuestTableComponent
+    GuestTableComponent,
+    RestaurantComponent,
+    ActionsComponent
   ],
   imports: [
     BrowserModule,

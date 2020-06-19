@@ -1,19 +1,24 @@
-button{
+/*button{
+     box-sizing: border-box;
+    width: 100px;
     display: block;
     width: 100%;
     text-align: center;
     border: 0;
     background-color: transparent;
     padding:0.5rem;
-    font-size: 14px;
-}
-    button.active{
+    font-size: 14px; 
+}*/
+    /* button.active{
         background-color: #0075c4;
         color: white;
     }
     button:hover{
         background-color: #f3f3f3;
-    }
+    } */
+.col-sm-3{
+    padding:2px;
+}
 table tr td{
     padding: 0;
 }
@@ -23,4 +28,5 @@ table{
 }
 table td{
     width: 25%;
+    overflow: hidden;
 }

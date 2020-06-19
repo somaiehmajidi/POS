@@ -13,6 +13,8 @@ export class HeaderComponent implements OnInit {
 
   invoices: Invoice[] = this.cart.invoices;
   selectedInvoice;
+
+  table;
   
   constructor(private cart: CartService,
               private router: Router) { }
@@ -47,5 +49,10 @@ export class HeaderComponent implements OnInit {
     this.selectedInvoice = invoice;
     this.cart.selectInvoice(invoice);
     this.router.navigate(['/main']);
+  }
+
+  setTable(){
+    this.invoices = [];
+    this.router.navigate(['/table'])
   }
 }

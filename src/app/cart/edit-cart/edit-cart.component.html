@@ -2,53 +2,157 @@
     <!-- <div>
         <input type="text" class="calculator-screen" [value]="currentNumber" disabled />
     </div> -->
-    <table class="calculator-operator table table-borderless" #keyboard>
+<div class="container" #keyboard>
+    <div class="row mb-1">
+        <div class="col-sm-3">
+            <button 
+            class="btn btn-sm btn-outline-secondary btn-block" type="button" (click) = "getNumber('1')" value="1">1</button>
+        </div>
+        <div class="col-sm-3">
+            <button 
+            class="btn btn-sm btn-outline-secondary btn-block" type="button" (click) = "getNumber('2')" value="2">2</button>
+        </div>
+        <div class="col-sm-3">
+            <button 
+            class="btn btn-sm btn-outline-secondary btn-block" type="button" (click) = "getNumber('3')" value="3">3</button>
+        </div>
+        <div class="col-sm-3">
+            <button type="btn button" 
+                (click) = "getOperand('qty')" 
+                class="btn btn-sm btn-outline-primary btn-block operator" 
+                value="qty"
+                [ngClass]="{'active': this.operator === 'qty'}">تعداد</button>
+        </div>
+    </div>
+    <div class="row mb-1">
+        <div class="col-sm-3">
+            <button class="btn btn-sm btn-outline-secondary btn-block" type="button" (click) = "getNumber('4')" value="4">4</button>
+        </div>
+        <div class="col-sm-3">
+            <button class="btn btn-sm btn-outline-secondary btn-block" type="button" (click) = "getNumber('5')" value="5">5</button>
+        </div>
+        <div class="col-sm-3">
+            <button class="btn btn-sm btn-outline-secondary btn-block" type="button" (click) = "getNumber('6')" value="6">6</button>
+        </div>
+        <div class="col-sm-3">
+            <button type="button" 
+                (click) = "getOperand('disc')" 
+                class="btn btn-sm btn-outline-primary btn-block operator" 
+                value="disc"
+                [ngClass]="{'active': this.operator === 'disc'}">تخفیف</button>
+        </div>
+    </div>
+    <div class="row mb-1">
+        <div class="col-sm-3">
+            <button class="btn btn-sm btn-outline-secondary btn-block" type="button" (click) = "getNumber('7')" value="7">7</button>
+        </div>
+        <div class="col-sm-3">
+            <button class="btn btn-sm btn-outline-secondary btn-block" type="button" (click) = "getNumber('8')" value="8">8</button>
+        </div>
+        <div class="col-sm-3">
+            <button class="btn btn-sm btn-outline-secondary btn-block" type="button" (click) = "getNumber('9')" value="9">9</button>
+        </div>
+        <div class="col-sm-3">
+            <button type="button" 
+                (click) = "getOperand('price')" 
+                class="btn btn-sm btn-outline-primary btn-block operator" 
+                value="price"
+                [ngClass]="{'active': this.operator === 'price'}">قیمت</button> 
+        </div>
+    </div>
+    <div class="row mb-1">
+        <div class="col-sm-3">
+            <button class="btn btn-sm btn-outline-secondary btn-block decimal" 
+                type="button" 
+                (click) = "getDecimal()" 
+                value=".">.</button>
+        </div>
+        <div class="col-sm-3">
+            <button class="btn btn-sm btn-outline-secondary btn-block" 
+                type="button" 
+                (click) = "getNumber('0')" 
+                value="0">0</button>
+        </div>
+        <div class="col-sm-3">
+            <button class="btn btn-sm btn-outline-secondary btn-block negative" 
+                type="button" (click) = "getNegative()" value="negative">+/-</button>
+        </div>
+        <div class="col-sm-3">
+            <button type="button" 
+                (click) = "remove()"  
+                class="btn btn-sm btn-outline-primary btn-block remove" value="remove">
+                <i class="fa fa-window-close-o"></i>
+            </button>
+        </div>
+    </div>
+</div>
+    <!-- <table class="calculator-operator table table-borderless" >
         <tr class="border-bottom">
-            <td class="border-left"><button type="button" (click) = "getNumber('1')" value="1">1</button></td>
-            <td class="border-left"><button type="button" (click) = "getNumber('2')" value="2">2</button></td>
-            <td class="border-left"><button type="button" (click) = "getNumber('3')" value="3">3</button></td>
+            <td class="border-left">
+                <button class="btn btn-sm btn-outline-dark" type="button" (click) = "getNumber('1')" value="1">1</button></td>
+            <td class="border-left">
+                <button class="btn btn-sm btn-outline-dark" type="button" (click) = "getNumber('2')" value="2">2</button></td>
+            <td class="border-left">
+                <button class="btn btn-sm btn-outline-dark" type="button" (click) = "getNumber('3')" value="3">3</button></td>
             <td>
                 <button type="btn button" 
                 (click) = "getOperand('qty')" 
-                class="operator" 
+                class="btn btn-sm btn-outline-primary operator" 
                 value="qty"
                 [ngClass]="{'active': this.operator === 'qty'}">تعداد</button>
             </td>
         </tr>
         <tr class="border-bottom">
-            <td class="border-left"><button type="button" (click) = "getNumber('4')" value="4">4</button></td>
-            <td class="border-left"><button type="button" (click) = "getNumber('5')" value="5">5</button></td>
-            <td class="border-left"><button type="button" (click) = "getNumber('6')" value="6">6</button></td>
+            <td class="border-left">
+                <button class="btn btn-sm btn-outline-dark" type="button" (click) = "getNumber('4')" value="4">4</button></td>
+            <td class="border-left">
+                <button class="btn btn-sm btn-outline-dark" type="button" (click) = "getNumber('5')" value="5">5</button></td>
+            <td class="border-left">
+                <button class="btn btn-sm btn-outline-dark" type="button" (click) = "getNumber('6')" value="6">6</button></td>
             <td>
                 <button type="button" 
                 (click) = "getOperand('disc')" 
-                class="operator" 
+                class="btn btn-sm btn-outline-primary operator" 
                 value="disc"
                 [ngClass]="{'active': this.operator === 'disc'}">تخفیف</button>
             </td> 
         </tr>
         <tr class="border-bottom">
-            <td class="border-left"><button type="button" (click) = "getNumber('7')" value="7">7</button></td>
-            <td class="border-left"><button type="button" (click) = "getNumber('8')" value="8">8</button></td>
-            <td class="border-left"><button type="button" (click) = "getNumber('9')" value="9">9</button></td>
+            <td class="border-left">
+                <button class="btn btn-sm btn-outline-dark" type="button" (click) = "getNumber('7')" value="7">7</button></td>
+            <td class="border-left">
+                <button class="btn btn-sm btn-outline-dark" type="button" (click) = "getNumber('8')" value="8">8</button></td>
+            <td class="border-left">
+                <button class="btn btn-sm btn-outline-dark" type="button" (click) = "getNumber('9')" value="9">9</button></td>
             <td>
                 <button type="button" 
                 (click) = "getOperand('price')" 
-                class="operator" 
+                class="btn btn-sm btn-outline-primary operator" 
                 value="price"
                 [ngClass]="{'active': this.operator === 'price'}">قیمت</button>            
             </td>
         </tr>
         <tr>
-            <td class="border-left"><button type="button" (click) = "getDecimal()" class="decimal" value=".">.</button>
-                </td>
-            <td class="border-left"><button type="button" (click) = "getNumber('0')" value="0">0</button></td>
             <td class="border-left">
-                <button type="button" (click) = "getNegative()"  class="negative" value="negative">+/-</button>
+                <button class="btn btn-sm btn-outline-dark decimal" 
+                type="button" 
+                (click) = "getDecimal()" 
+                value=".">.</button>
+                </td>
+            <td class="border-left">
+                <button class="btn btn-sm btn-outline-dark" 
+                type="button" 
+                (click) = "getNumber('0')" 
+                value="0">0</button></td>
+            <td class="border-left">
+                <button class="btn btn-sm btn-outline-dark negative" 
+                type="button" (click) = "getNegative()" value="negative">+/-</button>
             </td>
-            <td><button type="button" (click) = "remove()"  class="remove" value="remove">
+            <td><button type="button" 
+                (click) = "remove()"  
+                class="btn btn-sm btn-outline-primary remove" value="remove">
                 <i class="fa fa-window-close-o"></i>
             </button></td>
-        </tr>
-    </table>
+        </tr> 
+    </table> -->
 <!--</div>-->
