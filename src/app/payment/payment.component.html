@@ -52,7 +52,8 @@
                                     <td>{{line.due | number:'1.0'}}</td>
                                     <td><input type="text" 
                                         [(ngModel)]="line.tendered"
-                                        [readonly]="isReadOnly"></td>
+                                        [readonly]="isReadOnly"
+                                        (ngModelChange)="onChange(line)"></td>
                                     <td>
                                         <span *ngIf="line.type === 'نقد'">
                                             {{line.change | number:'1.0'}}
@@ -66,10 +67,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <!-- <div>
-                            <span>مبلغ باقیمانده: </span>
-                            <span></span>
-                        </div> -->
                     </ng-template>
                 </div>
             </div>

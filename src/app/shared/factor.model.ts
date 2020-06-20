@@ -11,5 +11,5 @@ export interface Payment{
     type: string,
     due: number,
     tendered: number,
-    change?: number
+    change: number
 }

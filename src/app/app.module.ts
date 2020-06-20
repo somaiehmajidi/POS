@@ -36,6 +36,7 @@ import { RenameTableComponent } from './restaurants/rename-table/rename-table.co
 import { GuestTableComponent } from './restaurants/guest-table/guest-table.component';
 import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
 import { ActionsComponent } from './cart/actions/actions.component';
+import { RestHeaderComponent } from './restaurants/rest-header/rest-header.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { ActionsComponent } from './cart/actions/actions.component';
     RenameTableComponent,
     GuestTableComponent,
     RestaurantComponent,
-    ActionsComponent
+    ActionsComponent,
+    RestHeaderComponent
   ],
   imports: [
     BrowserModule,

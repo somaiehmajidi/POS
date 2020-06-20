@@ -9,24 +9,24 @@
             (cdkDragEnded)="drop($event)"
             [class.selected]= "table === selectedTable"
             (click)="onSelect(table)"
-            (dblclick)="onBook(table)">
+            (dblclick)="onAdd()">
                 <h6>{{table.value}}</h6>
                 <div class="guest">{{table.guest}}</div>
                 
             </div>
             <div class="edit-box">
-                <button class="btn btn-outline-primary add" 
+                <button class="btn btn-outline-dark btn-block add" 
                 (click)="addTable()"><i class="fa fa-plus"></i></button>
-                <button class="btn btn-outline-primary remove" 
+                <button class="btn btn-outline-dark btn-block remove" 
                 (click)="removeTable()"
                 [disabled]="!selectedTable"><i class="fa fa-trash"></i></button>
-                <button class="btn btn-outline-primary guest" 
+                <button class="btn btn-outline-dark btn-block guest" 
                 (click)="manageGuests()"
                 [disabled]="!selectedTable"><i class="fa fa-user"></i></button>
-                <button class="btn btn-outline-primary text" 
+                <button class="btn btn-outline-dark btn-block text" 
                 (click)="renameTable()"
                 [disabled]="!selectedTable"><i class="fa fa-font"></i></button>
-                <button class="btn btn-outline-primary shape" 
+                <button class="btn btn-outline-dark btn-block shape" 
                 (click)="reshapeTable()"
                 [disabled]="!selectedTable"
                 >

@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Invoice } from '../shared/invoice.model';
 import { Factor, Payment } from '../shared/factor.model';
 import { CartService } from '../shared/cart.service';
-import { CustomerService } from '../shared/customer.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { NotificationService } from '../shared/notification.service';
-
+import { PaymentService } from '../shared/payment.service';
 
 @Component({
   selector: 'app-payment',
@@ -23,28 +21,32 @@ export class PaymentComponent implements OnInit {
   selectedLine;
   isReadOnly; msgSent; emailSent = false;
   totalChange: number = 0;
-  
 
   constructor(private cart: CartService,
             private router: Router,
             private location: Location,
-            private customerService: CustomerService,
+            private payService: PaymentService,
             private notify: NotificationService) { }
 
   ngOnInit(): void {
-    this.invoice = this.cart.selectedInvoice;    
+    this.invoice = this.cart.selectedInvoice; 
+    this.payService.invoice = this.cart.selectedInvoice;
+    
     let customers = this.invoice.customers;
     if (customers.length !==0 ){
        this.customer = customers[0]
     }
-    //else{
-      //
-      //this.invoice.customers.push(this.customer)
-      //this.cart.selectedInvoice.push(this.customer);
-    //}
 
+    this.payment = this.payService.payment;
+    this.payService.paySubject.subscribe(
+      data => {
+        this.selectedLine = data;
+      }
+    );
+  }
 
-
+  onChange(line){
+    this.payment[line.id - 1].change = line.tendered - line.due;
   }
 
   addCustomer(){
@@ -52,45 +54,61 @@ export class PaymentComponent implements OnInit {
   }
 
   addPaymentLine(type){
+    this.payService.addPayment(type);
+  }
+
+  addCash(){
     this.isReadOnly = false;
-    let id:number = 0;
-    let due = 0;
-    let tendered = 0;
-    let change = 0;
-    if (this.payment.length === 0){
-      id = 1;
-      due = this.invoice.paymentAmount;
+    let id = this.payment.length; 
+    if (id === 0){
+      let line: Payment = {
+        id: id+1,
+        due: this.invoice.paymentAmount,
+        tendered: 0,
+        change: (this.invoice.paymentAmount-this.invoice.tendered),
+        type: 'نقد'
+      }
+      this.payment.push(line);
+      this.selectedLine = line;
     }
     else{
-      id = this.payment[this.payment.length -1].id + 1;
-      if (this.payment[this.payment.length -1].change < 0){
-        due = Math.abs(this.payment[this.payment.length -1].change);
+      let line: Payment = {
+        id: id+1,
+        due: Math.abs(this.payment[this.payment.length -1].change),
+        tendered: 0,
+        change: (this.invoice.paymentAmount-this.invoice.tendered),
+        type: 'نقد'
       }
-      
+      this.payment.push(line);
+      this.selectedLine = line;
     }
-    let line = {
-      id: id,
-      type: type,
-      due: due,
-      tendered: tendered,
-      change: change
+  }
+
+  addCredit(){
+    this.isReadOnly = true;
+    let id = this.payment.length;
+    if (id === 0){
+      let line: Payment = {
+        id: id+1,
+        due: this.invoice.paymentAmount,
+        tendered: this.invoice.paymentAmount,
+        change: 0,
+        type: 'کارت'
+      }
+      this.payment.push(line);
+      this.selectedLine = line;
+    }else{
+      let line: Payment = {
+        id: id+1,
+        due: Math.abs(this.payment[this.payment.length -1].change),
+        tendered: Math.abs(this.payment[this.payment.length -1].change),
+        change: 0,
+        type: 'کارت'
+      }
+      this.payment.push(line);
+      this.selectedLine = line;
     }
-    switch(type){
-      case 'نقد':
-        this.isReadOnly = false;
-        break
-      case 'کارت':
-        line.tendered = line.due;
-        line.change = 0;
-        this.isReadOnly = true;
-        break
-      case 'کارت هدیه':
-        break
-      case 'چک':
-        break
-    }
-    this.payment.push(line);
-    this.selectedLine = line;
+    
   }
 
   removePaymentLine(line){
@@ -103,7 +121,7 @@ export class PaymentComponent implements OnInit {
   }
 
   selectLine(line){
-    this.selectedLine = line;
+    this.payService.paySubject.next(line)
   }
 
   goBack(){
@@ -132,9 +150,9 @@ export class PaymentComponent implements OnInit {
       //test factor..
       this.cart.factor = factor;
       //console.log(this.factor)
+      this.payService.payment = [];
       this.router.navigate(["/factor"])
     }
-
   }
 
   sendEmail(customer){
@@ -168,10 +186,6 @@ export class PaymentComponent implements OnInit {
   }
 
   ngAfterContentChecked(){
-    if(this.selectedLine){
-      this.selectedLine.change = this.selectedLine.tendered - this.selectedLine.due;
-    }
-    this.customer = this.invoice.customers[0];
   }
 
 }

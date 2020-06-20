@@ -1,16 +1,18 @@
 <nav class="navbar fixed-top navbar-dark bg-dark">
     <div class="header-wrap">
       <a class="navbar-brand" href="#">Point Of Sale</a>
+      <button class="btn btn-sm btn-outline-secondary btn-restaurant"
+      (click)="setTable()">restaurant pos</button>
     </div>
     <div class="headre-tabs">
       <ul>
-        <!-- <li *ngIf="selectedTable">
+        <li *ngIf="selectedTable">
           <a class="table" (click)="Back()">
             <span><i class="fa fa-arrow-left"></i></span>
             <span>طبقه اول</span>
             <span>{{selectedTable.value}}</span>
           </a>
-        </li> -->
+        </li>
         <li *ngFor="let invoice of invoices; let last = isLast" 
             [class.selected]="invoice === selectedInvoice"
             (click)="onClick(invoice)">

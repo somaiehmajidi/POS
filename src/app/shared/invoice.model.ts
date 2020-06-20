@@ -5,6 +5,7 @@ export interface Invoice{
     paymentAmount: number
     orders: Order[]
     customers?: Customer[]
+    payment?: any[]
 }
 export interface Order{
     id: number

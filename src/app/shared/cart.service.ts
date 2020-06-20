@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Invoice, Order } from '../shared/invoice.model';
+import { Invoice, Order } from './invoice.model';
+import { RestaurantService } from './restaurant.service';
+import { Subject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'  
@@ -23,9 +25,14 @@ export class CartService {
     isActive = false;
     selectedInvoice;
     selectedOrder;
+    selectedTable;
+
+    public invoiceSubject = new Subject<any>();
 
     //test factors...
     factor;
+
+    constructor(private restService: RestaurantService){}
 
     public add(product){
       let invoiceId = this.selectedInvoice.id;
@@ -57,39 +64,6 @@ export class CartService {
       this.invoices[invoiceId-1].amount = sum;
       this.invoices[invoiceId-1].paymentAmount = sum;
     }
-
-
-    // public addToCart(product){
-    //     if (this.invoices){
-    //         let order = this.orders.find(x => x.name === product.name)
-    //         if (order){
-    //             order.unit ++;
-    //             order.totalPrice += order.price;
-    //         }
-    //         else{
-    //             let id = this.orders.length;
-    //             this.orders.push(
-    //                 {id: id, name: product.name, price: product.price, totalPrice: product.price, unit: 1}
-    //             )
-    //         }
-    //         let sum = this.orders.reduce(function (accumulator, order){
-    //             return accumulator + order.totalPrice
-    //         },0)
-    //         let id = 1, date = new Date(), amount = sum, paymentAmount = sum, orders = this.orders;
-    //         const invoice = {id, date, amount, paymentAmount, orders}
-    //         let item = this.invoices.find(x => x.id === invoice.id)
-    //         if (item){
-    //             item.amount = sum;
-    //             item.paymentAmount = sum;
-    //         }
-    //         else{
-    //             this.invoices.push(invoice)
-    //         }    
-    //     }
-    //     else{
-    //         alert ('new session')
-    //     }   
-    // }
 
     onSelect(order: Order): void{
         this.selectedOrder = order;
@@ -203,7 +177,10 @@ export class CartService {
    //Invoice functions
   addInvoice(){
     let id: any;
-    if(this.invoices.length === 1){
+    if (this.invoices.length === 0){
+      id =1 
+    }
+    else if(this.invoices.length === 1){
       id = 2;
     }
     else{
@@ -220,6 +197,7 @@ export class CartService {
     }
     this.invoices.push(invoice);
     this.selectedInvoice = invoice;
+    this.invoiceSubject.next(invoice);
   }
 
   removeInvoice(invoice){
@@ -229,11 +207,20 @@ export class CartService {
     }
     //selected Invoice & selected Order:
     this.selectedInvoice = this.invoices[this.invoices.length-1];
+    this.invoiceSubject.next(this.invoices.length-1)
     let array = this.selectedInvoice.orders;
     this.selectedOrder = array[array.length-1];
   }
 
+  removeInvoiceById(id){
+    this.invoices[id-1].orders = [];
+    this.invoices[id-1].payment = [];
+    this.invoices.splice(id-1,1);
+    this.invoiceSubject.next(this.invoices.length-1);
+  }
+
   selectInvoice(invoice){
+    this.invoiceSubject.next(invoice);
     this.selectedInvoice = invoice;
     if (invoice.orders.lenght !== 0){
       let array = this.selectedInvoice.orders;

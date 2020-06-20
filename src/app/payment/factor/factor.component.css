@@ -7,10 +7,9 @@ table{
 }
 table tr td{
     padding: 2.5% 5%;
+    border-top: none;
 }
-/* .orders div.order{
-    border-bottom: 1px dotted #ccc;
+.print-container{
+    border: 1px solid #dee2e6;
 }
-    .orders div.order:last-child{
-        border-bottom: none !important;
-    } */
+

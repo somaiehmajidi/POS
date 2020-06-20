@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { RenameTableComponent } from '../rename-table/rename-table.component';
 import { GuestTableComponent } from '../guest-table/guest-table.component';
 import { Router } from '@angular/router';
+import { Table } from '../../shared/table.model';
+import { RestaurantService } from '../../shared/restaurant.service';
 
 @Component({
   selector: 'app-table',
@@ -11,23 +13,28 @@ import { Router } from '@angular/router';
 })
 export class TableComponent implements OnInit {
 
-  tables = [
-    {id:1, value: 'T1', disabled: false, guest: 4}, 
-    {id:2, value: 'T2', disabled: false, guest: 4}, 
-    {id:3, value: 'T3', disabled: true, guest: 4}, 
-    {id:4, value: 'T4', disabled: false, guest: 4}, 
-    {id:5, value: 'T5', disabled: false, guest: 4}, 
-    {id:6, value: 'T6', disabled: false, guest: 4}, 
-    {id:7, value: 'T7', disabled: false, guest: 4}, 
-    {id:8, value: 'T8', disabled: false, guest: 4} 
-  ]
+  tables: Table[] = [
+    {id:1, value: 'T1', disabled: false, guest: 4, shape: 'rect'}, 
+    {id:2, value: 'T2', disabled: false, guest: 4, shape: 'rect'}, 
+    {id:3, value: 'T3', disabled: true, guest: 4, shape: 'rect'}, 
+    {id:4, value: 'T4', disabled: false, guest: 4, shape: 'rect'}, 
+    {id:5, value: 'T5', disabled: false, guest: 4, shape: 'rect'}, 
+    {id:6, value: 'T6', disabled: false, guest: 4, shape: 'rect'}, 
+    {id:7, value: 'T7', disabled: false, guest: 4, shape: 'rect'}, 
+    {id:8, value: 'T8', disabled: false, guest: 4, shape: 'rect'} 
+  ];
 
   selectedTable;
-  isCircle = false;
+  isCircle;
 
-  constructor(private dialog: MatDialog, private router: Router) { }
+  name: string = '';
+
+  constructor(private dialog: MatDialog, 
+              private router: Router,
+              private restService: RestaurantService) { }
 
   ngOnInit(): void {
+    
   }
 
   onSelect(table){
@@ -38,9 +45,9 @@ export class TableComponent implements OnInit {
     console.log(event)
   }
 
-  onBook(table){
-    this.router.navigate(['/main']); 
-    return table;
+  onAdd(){
+    this.restService.passTable(this.selectedTable);
+    this.router.navigate(['/restaurant']); 
   }
 
   // Edit tables
@@ -52,14 +59,27 @@ export class TableComponent implements OnInit {
     else {
       id = this.tables[this.tables.length-1].id + 1;
     }
-    let table = {id: id, value: 'T'+id, disabled: false, guest: 4}
-    this.tables.push(table)
+    let table = {id: id, value: 'T'+id, disabled: false, guest: 4, shape: 'rect'};
+    this.tables.push(table);
+    this.selectedTable = table;
   }
 
   removeTable(){
     let index = this.tables.indexOf(this.selectedTable);
     if (index > -1 ){
-      this.tables.splice(index,1)
+      if (confirm("آیا از حذف میز "+ this.selectedTable.value + " اطمینان دارید؟")){
+        this.tables.splice(index,1)
+      }
+    }
+    if (this.tables.length === 0){
+      this.selectedTable = {}
+    }
+    else{
+      if (index === 0){
+        this.selectedTable = this.tables[index]
+      }else{
+        this.selectedTable = this.tables[index - 1]
+      }
     }
   }
 
